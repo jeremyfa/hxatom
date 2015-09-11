@@ -58,6 +58,7 @@ class Convert {
         for (key in api.classes.keys()) {
             var cls = api.classes[key];
             var fields:Array<Field> = [];
+            var forceStatic:Bool = (cls.name == "Atom");
 
             for (p in cls.classProperties) {
                 var f = convertProperty(p);
@@ -66,7 +67,9 @@ class Convert {
             }
 
             for (p in cls.instanceProperties) {
-                fields.push(convertProperty(p));
+                var m = convertProperty(p);
+                if (forceStatic) m.access.push(AStatic);
+                fields.push(m);
             }
 
             for (m in cls.classMethods) {
@@ -80,6 +83,8 @@ class Convert {
                     var f = convertMethod(m);
                     if (f.name == "constructor")
                         f.name = "new";
+                    else if (forceStatic)
+                        f.access.push(AStatic);
                     fields.push(f);
                 }
 
@@ -129,6 +134,7 @@ class Convert {
             name: p.name,
             kind: FVar(macro : Dynamic),
             doc: p.summary,
+            access: []
         };
     }
 
