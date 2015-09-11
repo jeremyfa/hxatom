@@ -88,17 +88,32 @@ class Convert {
                 sup = {pack: ["atom"], name: cls.superClass};
             }
 
-            var s = printer.printTypeDefinition({
-                pos: pos,
-                pack: ["atom"],
-                name: cls.name,
-                isExtern: true,
-                kind: TDClass(sup),
-                fields: fields,
-                meta: [
-                    {name: ":native", params: [{expr: EConst(CString(cls.name)), pos: pos}], pos: pos}
-                ]
-            });
+            var s;
+            if (cls.name == "Atom") {
+                s = printer.printTypeDefinition({
+                    pos: pos,
+                    pack: ["atom"],
+                    name: cls.name,
+                    isExtern: true,
+                    kind: TDClass(sup),
+                    fields: fields,
+                    meta: [
+                        {name: ":jsRequire", params: [{expr: EConst(CString("atom")), pos: pos}], pos: pos}
+                    ]
+                });
+            } else {
+                s = printer.printTypeDefinition({
+                    pos: pos,
+                    pack: ["atom"],
+                    name: cls.name,
+                    isExtern: true,
+                    kind: TDClass(sup),
+                    fields: fields,
+                    meta: [
+                        {name: ":jsRequire", params: [{expr: EConst(CString("atom")), pos: pos}, {expr: EConst(CString(cls.name)), pos: pos}], pos: pos}
+                    ]
+                });
+            }
 
             if (cls.summary != null) {
                 s = "/**\n\t" + cls.summary.replace("\n", "\n\t") + "\n**/\n" + s;
