@@ -30,7 +30,14 @@ typedef AtomField = {
 typedef AtomMethod = {
     >AtomField,
     arguments:Array<AtomArg>,
+    titledArguments:Array<AtomTitledArgs>,
     returnValues:Array<AtomReturn>,
+}
+
+typedef AtomTitledArgs = {
+    title:String,
+    description:String,
+    arguments:Array<AtomArg>,
 }
 
 typedef AtomArg = {
@@ -171,9 +178,32 @@ class Convert {
             returnType = makeEither([for (r in m.returnValues) r.type]);
 
         var args:Array<FunctionArg> = [];
+        var meta:Null<haxe.macro.Metadata> = [];
         if (m.arguments != null) {
             for (a in m.arguments)
                 args.push({name: a.name, type: convertType(a.type, a.children)});
+        }
+        else if (m.titledArguments != null) {
+            var i = 0;
+            for (ta in m.titledArguments) {
+                if (i == 0) {
+                    for (a in ta.arguments)
+                        args.push({name: a.name, type: convertType(a.type, a.children)});
+                } else {
+                    // Use @:overload meta in case there are multiple
+                    // ways of calling the method
+                    var args:Array<FunctionArg> = [];
+                    for (a in ta.arguments)
+                        args.push({name: a.name, type: convertType(a.type, a.children)});
+                    meta.push({name: ":overload", params: [{expr: EFunction(null, {
+                        args: args,
+                        params: null,
+                        expr: macro {},
+                        ret: returnType
+                    }), pos: pos}], pos: pos});
+                }
+                i++;
+            }
         }
 
         return {
@@ -186,6 +216,7 @@ class Convert {
             }),
             access: [],
             doc: m.summary,
+            meta: meta
         };
     }
 
