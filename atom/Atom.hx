@@ -2,187 +2,172 @@
 	Atom global for dealing with packages, themes, menus, and the window.
 **/
 package atom;
-@:native("Atom") extern class Atom {
+@:jsRequire("atom") extern class Atom {
 	/**
 		A {CommandRegistry} instance 
 	**/
-	var commands : Dynamic;
+	static var commands : atom.CommandRegistry;
 	/**
 		A {Config} instance 
 	**/
-	var config : Dynamic;
+	static var config : atom.Config;
 	/**
 		A {Clipboard} instance 
 	**/
-	var clipboard : Dynamic;
+	static var clipboard : atom.Clipboard;
 	/**
 		A {ContextMenuManager} instance 
 	**/
-	var contextMenu : Dynamic;
+	static var contextMenu : atom.ContextMenuManager;
 	/**
 		A {MenuManager} instance 
 	**/
-	var menu : Dynamic;
+	static var menu : atom.MenuManager;
 	/**
 		A {KeymapManager} instance 
 	**/
-	var keymaps : Dynamic;
+	static var keymaps : atom.KeymapManager;
 	/**
 		A {TooltipManager} instance 
 	**/
-	var tooltips : Dynamic;
+	static var tooltips : atom.TooltipManager;
 	/**
 		A {NotificationManager} instance 
 	**/
-	var notifications : Dynamic;
+	static var notifications : atom.NotificationManager;
 	/**
 		A {Project} instance 
 	**/
-	var project : Dynamic;
+	static var project : atom.Project;
 	/**
 		A {GrammarRegistry} instance 
 	**/
-	var grammars : Dynamic;
+	static var grammars : atom.GrammarRegistry;
 	/**
 		A {PackageManager} instance 
 	**/
-	var packages : Dynamic;
+	static var packages : atom.PackageManager;
 	/**
 		A {ThemeManager} instance 
 	**/
-	var themes : Dynamic;
+	static var themes : atom.ThemeManager;
 	/**
 		A {StyleManager} instance 
 	**/
-	var styles : Dynamic;
+	static var styles : atom.StyleManager;
 	/**
 		A {DeserializerManager} instance 
 	**/
-	var deserializers : Dynamic;
+	static var deserializers : atom.DeserializerManager;
 	/**
 		A {ViewRegistry} instance 
 	**/
-	var views : Dynamic;
+	static var views : atom.ViewRegistry;
 	/**
 		A {Workspace} instance 
 	**/
-	var workspace : Dynamic;
+	static var workspace : atom.Workspace;
 	/**
 		Invoke the given callback whenever {::beep} is called.
 	**/
-	function onDidBeep(callback:haxe.Constraints.Function):atom.Disposable;
+	static function onDidBeep(callback:haxe.Constraints.Function):atom.Disposable;
 	/**
 		Invoke the given callback when there is an unhandled error, but
 		before the devtools pop open
 	**/
-	function onWillThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; var preventDefault : haxe.Constraints.Function; } -> Dynamic):atom.Disposable;
+	static function onWillThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; var preventDefault : haxe.Constraints.Function; } -> Dynamic):atom.Disposable;
 	/**
 		Invoke the given callback whenever there is an unhandled error.
 	**/
-	function onDidThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; } -> Dynamic):atom.Disposable;
-	/**
-		Is the current window in development mode? 
-	**/
-	function inDevMode():Dynamic;
-	/**
-		Is the current window in safe mode? 
-	**/
-	function inSafeMode():Dynamic;
-	/**
-		Is the current window running specs? 
-	**/
-	function inSpecMode():Dynamic;
+	static function onDidThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; } -> Dynamic):atom.Disposable;
+	static function inDevMode():Bool;
+	static function inSafeMode():Bool;
+	static function inSpecMode():Bool;
 	/**
 		Get the version of the Atom application.
 	**/
-	function getVersion():String;
-	/**
-		Determine whether the current version is an official release. 
-	**/
-	function isReleasedVersion():Dynamic;
+	static function getVersion():String;
+	static function isReleasedVersion():Bool;
 	/**
 		Get the time taken to completely load the current window.
 	**/
-	function getWindowLoadTime():Float;
+	static function getWindowLoadTime():Float;
 	/**
 		Open a new Atom window using the given options.
 	**/
-	function open(options:{ var pathsToOpen : Array<Dynamic>; var newWindow : Bool; var devMode : Bool; var safeMode : Bool; }):Dynamic;
+	static function open(options:{ var pathsToOpen : Array<Dynamic>; var newWindow : Bool; var devMode : Bool; var safeMode : Bool; }):Dynamic;
 	/**
 		Prompt the user to select one or more folders.
 	**/
-	function pickFolder(callback:Array<Dynamic> -> Dynamic):Dynamic;
+	static function pickFolder(callback:Array<Dynamic> -> Dynamic):Dynamic;
 	/**
 		Close the current window. 
 	**/
-	function close():Dynamic;
+	static function close():Dynamic;
 	/**
 		Get the size of current window.
 	**/
-	function getSize():Dynamic<Dynamic>;
+	static function getSize():Dynamic<Dynamic>;
 	/**
 		Set the size of current window.
 	**/
-	function setSize(width:Float, height:Float):Dynamic;
+	static function setSize(width:Float, height:Float):Dynamic;
 	/**
 		Get the position of current window.
 	**/
-	function getPosition():Dynamic<Dynamic>;
+	static function getPosition():Dynamic<Dynamic>;
 	/**
 		Set the position of current window.
 	**/
-	function setPosition(x:Float, y:Float):Dynamic;
+	static function setPosition(x:Float, y:Float):Dynamic;
 	/**
 		Move current window to the center of the screen. 
 	**/
-	function center():Dynamic;
+	static function center():Dynamic;
 	/**
 		Focus the current window. 
 	**/
-	function focus():Dynamic;
+	static function focus():Dynamic;
 	/**
 		Show the current window. 
 	**/
-	function show():Dynamic;
+	static function show():Dynamic;
 	/**
 		Hide the current window. 
 	**/
-	function hide():Dynamic;
+	static function hide():Dynamic;
 	/**
 		Reload the current window. 
 	**/
-	function reload():Dynamic;
-	function isMaximized():Bool;
-	/**
-		Is the current window in full screen mode? 
-	**/
-	function isFullScreen():Dynamic;
+	static function reload():Dynamic;
+	static function isMaximized():Bool;
+	static function isFullScreen():Bool;
 	/**
 		Set the full screen state of the current window. 
 	**/
-	function setFullScreen():Dynamic;
+	static function setFullScreen():Dynamic;
 	/**
 		Toggle the full screen state of the current window. 
 	**/
-	function toggleFullScreen():Dynamic;
+	static function toggleFullScreen():Dynamic;
 	/**
 		Visually and audibly trigger a beep. 
 	**/
-	function beep():Dynamic;
+	static function beep():Dynamic;
 	/**
 		A flexible way to open a dialog akin to an alert dialog.
 	**/
-	function confirm(options:{ var message : String; var detailedMessage : String; var buttons : Dynamic; }):Float;
+	static function confirm(options:{ var message : String; var detailedMessage : String; var buttons : Dynamic; }):Float;
 	/**
 		Open the dev tools for the current window. 
 	**/
-	function openDevTools():Dynamic;
+	static function openDevTools():Dynamic;
 	/**
 		Toggle the visibility of the dev tools for the current window. 
 	**/
-	function toggleDevTools():Dynamic;
+	static function toggleDevTools():Dynamic;
 	/**
 		Execute code in dev tools. 
 	**/
-	function executeJavaScriptInDevTools():Dynamic;
+	static function executeJavaScriptInDevTools():Dynamic;
 }

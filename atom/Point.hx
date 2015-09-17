@@ -2,15 +2,15 @@
 	Represents a point in a buffer in row/column coordinates.
 **/
 package atom;
-@:native("Point") extern class Point {
+@:jsRequire("atom", "Point") extern class Point {
 	/**
 		A zero-indexed {Number} representing the row of the {Point}. 
 	**/
-	var row : Dynamic;
+	var row : Float;
 	/**
 		A zero-indexed {Number} representing the column of the {Point}. 
 	**/
-	var column : Dynamic;
+	var column : Float;
 	/**
 		Convert any point-compatible object to a {Point}.
 	**/

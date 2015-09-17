@@ -3,7 +3,7 @@
 	application menu.
 **/
 package atom;
-@:native("MenuManager") extern class MenuManager {
+@:jsRequire("atom", "MenuManager") extern class MenuManager {
 	/**
 		Adds the given items to the application menu.
 	**/

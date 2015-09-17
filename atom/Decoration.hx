@@ -5,7 +5,7 @@
 	around marked ranges of text.
 **/
 package atom;
-@:native("Decoration") extern class Decoration {
+@:jsRequire("atom", "Decoration") extern class Decoration {
 	/**
 		Destroy this marker.
 	**/

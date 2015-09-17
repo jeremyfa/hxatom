@@ -3,7 +3,7 @@
 	Node's ChildProcess.
 **/
 package atom;
-@:native("BufferedProcess") extern class BufferedProcess {
+@:jsRequire("atom", "BufferedProcess") extern class BufferedProcess {
 	/**
 		Runs the given command by spawning a new child process.
 	**/

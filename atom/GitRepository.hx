@@ -2,7 +2,7 @@
 	Represents the underlying git operations performed by Atom.
 **/
 package atom;
-@:native("GitRepository") extern class GitRepository {
+@:jsRequire("atom", "GitRepository") extern class GitRepository {
 	/**
 		Creates a new GitRepository instance.
 	**/

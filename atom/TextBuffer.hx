@@ -3,7 +3,7 @@
 	annotate logical regions in the text. 
 **/
 package atom;
-@:native("TextBuffer") extern class TextBuffer {
+@:jsRequire("atom", "TextBuffer") extern class TextBuffer {
 	/**
 		Create a new buffer with the given params.
 	**/

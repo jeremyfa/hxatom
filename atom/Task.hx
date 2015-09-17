@@ -2,7 +2,7 @@
 	Run a node script in a separate process.
 **/
 package atom;
-@:native("Task") extern class Task {
+@:jsRequire("atom", "Task") extern class Task {
 	/**
 		A helper method to easily launch and run a task once.
 	**/

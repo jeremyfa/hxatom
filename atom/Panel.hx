@@ -4,7 +4,7 @@
 	and friends to add panels.
 **/
 package atom;
-@:native("Panel") extern class Panel {
+@:jsRequire("atom", "Panel") extern class Panel {
 	/**
 		Destroy and remove this panel from the UI. 
 	**/

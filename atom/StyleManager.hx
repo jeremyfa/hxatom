@@ -6,7 +6,7 @@
 	which clone and attach style elements in different contexts. 
 **/
 package atom;
-@:native("StyleManager") extern class StyleManager {
+@:jsRequire("atom", "StyleManager") extern class StyleManager {
 	/**
 		Invoke `callback` for all current and future style elements.
 	**/

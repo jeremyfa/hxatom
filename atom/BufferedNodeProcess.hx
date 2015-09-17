@@ -3,7 +3,7 @@
 	to run.
 **/
 package atom;
-@:native("BufferedNodeProcess") extern class BufferedNodeProcess extends atom.BufferedProcess {
+@:jsRequire("atom", "BufferedNodeProcess") extern class BufferedNodeProcess extends atom.BufferedProcess {
 	/**
 		Runs the given Node script by spawning a new child process.
 	**/

@@ -2,15 +2,15 @@
 	Represents a region in a buffer in row/column coordinates.
 **/
 package atom;
-@:native("Range") extern class Range {
+@:jsRequire("atom", "Range") extern class Range {
 	/**
 		A {Point} representing the start of the {Range}. 
 	**/
-	var start : Dynamic;
+	var start : atom.Point;
 	/**
 		A {Point} representing the end of the {Range}. 
 	**/
-	var end : Dynamic;
+	var end : atom.Point;
 	/**
 		Convert any range-compatible object to a {Range}.
 	**/

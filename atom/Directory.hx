@@ -2,7 +2,7 @@
 	Represents a directory on disk that can be watched for changes. 
 **/
 package atom;
-@:native("Directory") extern class Directory {
+@:jsRequire("atom", "Directory") extern class Directory {
 	/**
 		Configures a new Directory instance, no files are accessed.
 	**/

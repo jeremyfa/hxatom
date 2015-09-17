@@ -2,7 +2,7 @@
 	Manages the deserializers used for serialized state
 **/
 package atom;
-@:native("DeserializerManager") extern class DeserializerManager {
+@:jsRequire("atom", "DeserializerManager") extern class DeserializerManager {
 	/**
 		Register the given class(es) as deserializers.
 	**/

@@ -5,7 +5,7 @@
 	classes that expose an event-based API.
 **/
 package atom;
-@:native("Emitter") extern class Emitter {
+@:jsRequire("atom", "Emitter") extern class Emitter {
 	/**
 		Construct an emitter.
 	**/

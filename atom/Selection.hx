@@ -2,7 +2,7 @@
 	Represents a selection in the {TextEditor}. 
 **/
 package atom;
-@:native("Selection") extern class Selection {
+@:jsRequire("atom", "Selection") extern class Selection {
 	/**
 		Calls your `callback` when the selection was moved.
 	**/
@@ -124,6 +124,14 @@ package atom;
 	**/
 	function selectToNextWordBoundary():Dynamic;
 	/**
+		Selects text to the previous subword boundary. 
+	**/
+	function selectToPreviousSubwordBoundary():Dynamic;
+	/**
+		Selects text to the next subword boundary. 
+	**/
+	function selectToNextSubwordBoundary():Dynamic;
+	/**
 		Selects all the text from the current cursor position to the
 		beginning of the next paragraph. 
 	**/
@@ -199,6 +207,16 @@ package atom;
 		selection to the end of the current word if nothing is selected. 
 	**/
 	function deleteToEndOfWord():Dynamic;
+	/**
+		Removes the selection or all characters from the start of the
+		selection to the end of the current word if nothing is selected. 
+	**/
+	function deleteToBeginningOfSubword():Dynamic;
+	/**
+		Removes the selection or all characters from the start of the
+		selection to the end of the current word if nothing is selected. 
+	**/
+	function deleteToEndOfSubword():Dynamic;
 	/**
 		Removes only the selected text. 
 	**/

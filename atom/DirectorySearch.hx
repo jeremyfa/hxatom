@@ -2,7 +2,7 @@
 	Searches local files for lines matching a specified regex.
 **/
 package atom;
-@:native("DirectorySearch") extern class DirectorySearch {
+@:jsRequire("atom", "DirectorySearch") extern class DirectorySearch {
 	/**
 		Implementation of `then()` to satisfy the *thenable* contract.
 		This makes it possible to use a `DirectorySearch` with `Promise.all()`.

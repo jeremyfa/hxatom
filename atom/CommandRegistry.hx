@@ -5,11 +5,12 @@
 	presented in the command palette.
 **/
 package atom;
-@:native("CommandRegistry") extern class CommandRegistry {
+@:jsRequire("atom", "CommandRegistry") extern class CommandRegistry {
 	/**
 		Add one or more command listeners associated with a selector.
 	**/
-	function add():atom.Disposable;
+	@:overload(function(target:String, commands:Dynamic<Dynamic>):atom.Disposable { })
+	function add(target:String, commandName:String, callback:Dynamic -> Dynamic):atom.Disposable;
 	/**
 		Find all registered commands matching a query.
 	**/
@@ -18,4 +19,12 @@ package atom;
 		Simulate the dispatch of a command on a DOM node.
 	**/
 	function dispatch(target:Dynamic, commandName:String):Dynamic;
+	/**
+		Invoke the given callback before dispatching a command event.
+	**/
+	function onWillDispatch(callback:Dynamic -> Dynamic):Dynamic;
+	/**
+		Invoke the given callback after dispatching a command event.
+	**/
+	function onDidDispatch(callback:Dynamic -> Dynamic):Dynamic;
 }

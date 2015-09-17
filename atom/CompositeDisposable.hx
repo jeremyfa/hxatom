@@ -3,7 +3,7 @@
 	into a single disposable, so they can all be disposed as a group.
 **/
 package atom;
-@:native("CompositeDisposable") extern class CompositeDisposable {
+@:jsRequire("atom", "CompositeDisposable") extern class CompositeDisposable {
 	/**
 		Construct an instance, optionally with one or more disposables 
 	**/

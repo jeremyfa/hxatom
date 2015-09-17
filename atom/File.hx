@@ -3,7 +3,7 @@
 	written to. 
 **/
 package atom;
-@:native("File") extern class File {
+@:jsRequire("atom", "File") extern class File {
 	/**
 		Configures a new File instance, no files are accessed.
 	**/

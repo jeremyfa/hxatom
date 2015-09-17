@@ -3,7 +3,7 @@
 	to the user. 
 **/
 package atom;
-@:native("NotificationManager") extern class NotificationManager {
+@:jsRequire("atom", "NotificationManager") extern class NotificationManager {
 	/**
 		Invoke the given callback after a notification has been added.
 	**/

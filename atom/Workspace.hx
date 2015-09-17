@@ -3,7 +3,7 @@
 	An instance of this class is available via the `atom.workspace` global.
 **/
 package atom;
-@:native("Workspace") extern class Workspace {
+@:jsRequire("atom", "Workspace") extern class Workspace {
 	/**
 		Invoke the given callback with all current and future text
 		editors in the workspace.
@@ -33,6 +33,11 @@ package atom;
 		Invoke the given callback when a pane is added to the workspace.
 	**/
 	function onDidAddPane(callback:{ var pane : Dynamic; } -> Dynamic):atom.Disposable;
+	/**
+		Invoke the given callback before a pane is destroyed in the
+		workspace.
+	**/
+	function onWillDestroyPane(callback:{ var pane : Dynamic; } -> Dynamic):atom.Disposable;
 	/**
 		Invoke the given callback when a pane is destroyed in the
 		workspace.

@@ -2,7 +2,7 @@
 	Grammar that tokenizes lines of text.
 **/
 package atom;
-@:native("Grammar") extern class Grammar {
+@:jsRequire("atom", "Grammar") extern class Grammar {
 	/**
 		Invoke the given callback when this grammar is updated due to a
 		grammar it depends on being added or removed from the registry.

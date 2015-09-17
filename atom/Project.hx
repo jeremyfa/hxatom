@@ -2,7 +2,7 @@
 	Represents a project that's opened in Atom.
 **/
 package atom;
-@:native("Project") extern class Project {
+@:jsRequire("atom", "Project") extern class Project {
 	/**
 		Invoke the given callback when the project paths change.
 	**/

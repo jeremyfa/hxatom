@@ -2,7 +2,7 @@
 	Used to access all of Atom's configuration details.
 **/
 package atom;
-@:native("Config") extern class Config {
+@:jsRequire("atom", "Config") extern class Config {
 	/**
 		Add a listener for changes to a given key path. This is different
 		than {::onDidChange} in that it will immediately call your callback with the

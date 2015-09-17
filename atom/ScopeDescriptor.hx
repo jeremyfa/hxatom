@@ -4,7 +4,7 @@
 	path.
 **/
 package atom;
-@:native("ScopeDescriptor") extern class ScopeDescriptor {
+@:jsRequire("atom", "ScopeDescriptor") extern class ScopeDescriptor {
 	/**
 		Create a {ScopeDescriptor} object.
 	**/

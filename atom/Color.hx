@@ -3,7 +3,7 @@
 	at the key path is of type 'color'. 
 **/
 package atom;
-@:native("Color") extern class Color {
+@:jsRequire("atom", "Color") extern class Color {
 	/**
 		Parse a {String} or {Object} into a {Color}.
 	**/

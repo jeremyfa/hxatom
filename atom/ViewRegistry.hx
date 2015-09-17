@@ -5,12 +5,12 @@
 	model/view association was registered via {::addViewProvider}
 **/
 package atom;
-@:native("ViewRegistry") extern class ViewRegistry {
+@:jsRequire("atom", "ViewRegistry") extern class ViewRegistry {
 	/**
 		Add a provider that will be used to construct views in the
 		workspace's view layer based on model objects in its model layer.
 	**/
-	function addViewProvider(providerSpec:{ var modelConstructor : haxe.Constraints.Function; var viewConstructor : haxe.Constraints.Function; var createView : haxe.Constraints.Function; }):atom.Disposable;
+	function addViewProvider(modelConstructor:haxe.Constraints.Function, createView:haxe.Constraints.Function):atom.Disposable;
 	/**
 		Get the view associated with an object in the workspace.
 	**/
