@@ -49,10 +49,18 @@ typedef AtomProperty = {
 }
 
 class Convert {
-    static var pos =  {min: 0, max: 0, file: ""};
+    static var pos = {min: 0, max: 0, file: ""};
+    static var atomClasses:Map<String,Bool> = new Map<String,Bool>();
 
     static function main() {
         var api:AtomApi = haxe.Json.parse(sys.io.File.getContent(Sys.args()[0]));
+
+        // Keep a mapping of all atom available classes
+        for (key in api.classes.keys()) {
+            var cls = api.classes[key];
+            atomClasses.set(cls.name, true);
+        }
+
         sys.FileSystem.createDirectory("atom");
         var printer = new haxe.macro.Printer();
         for (key in api.classes.keys()) {
@@ -212,7 +220,13 @@ class Convert {
             case "Array" | "array":
                 macro : Array<Dynamic>;
             default:
-                TPath({pack: ["atom"], name: type});
+                if (atomClasses.exists(type)) {
+                    TPath({pack: ["atom"], name: type});
+                } else {
+                    // If atom API is making a reference to a type
+                    // that doesn't exist, use Dynamic type
+                    macro : Array<Dynamic>;
+                }
         }
     }
 
