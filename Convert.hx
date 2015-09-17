@@ -137,13 +137,30 @@ class Convert {
     }
 
     static function convertProperty(p:AtomProperty):Field {
+
+        var varType = macro : Dynamic;
+        if (p.summary != null)
+            varType = extractTypeFromDoc(p.summary);
+
         return {
             pos: pos,
             name: p.name,
-            kind: FVar(macro : Dynamic),
+            kind: FVar(varType),
             doc: p.summary,
             access: []
         };
+    }
+
+    static function extractTypeFromDoc(doc:String):ComplexType {
+
+        // Match 'A {Something} instance'
+        // Match 'A zero-indexed {Something}'
+        var r = ~/^A(?:.*?)\{([A-Za-z0-9_]+)\}/i;
+        if (r.match(doc)) {
+            return convertType(r.matched(1));
+        }
+
+        return macro : Dynamic;
     }
 
     static function convertMethod(m:AtomMethod):Field {
@@ -177,7 +194,7 @@ class Convert {
         return if (kwds.indexOf(n) != -1) n + "_" else n; // TODO: we have to make some abstract for that
     }
 
-    static function convertType(type:String, children:Array<AtomArg>):ComplexType {
+    static function convertType(type:String, ?children:Array<AtomArg>):ComplexType {
         return switch (type) {
             case null:
                 macro : Dynamic;
