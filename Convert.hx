@@ -118,7 +118,7 @@ class Convert {
                     kind: TDClass(sup),
                     fields: fields,
                     meta: [
-                        {name: ":jsRequire", params: [{expr: EConst(CString("atom")), pos: pos}], pos: pos}
+                        {name: ":native", params: [{expr: EConst(CString("atom")), pos: pos}], pos: pos}
                     ]
                 });
             } else {

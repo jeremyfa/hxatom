@@ -2,7 +2,7 @@
 	Atom global for dealing with packages, themes, menus, and the window.
 **/
 package atom;
-@:jsRequire("atom") extern class Atom {
+@:native("atom") extern class Atom {
 	/**
 		A {CommandRegistry} instance 
 	**/
