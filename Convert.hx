@@ -247,10 +247,15 @@ class Convert {
                 if (children != null) {
                     var fields:Array<Field> = [];
                     for (child in children) {
+                        var meta:Null<haxe.macro.Metadata> = [];
+                        if (child.isOptional) {
+                            meta.push({name: ":optional", pos: pos});
+                        }
                         fields.push({
                             pos: pos,
                             name: escapeName(child.name),
-                            kind: FVar(convertType(child.type, child.children))
+                            kind: FVar(convertType(child.type, child.children)),
+                            meta: meta
                         });
                     }
                     TAnonymous(fields);

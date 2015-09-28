@@ -157,7 +157,9 @@ package atom;
 	/**
 		A flexible way to open a dialog akin to an alert dialog.
 	**/
-	static function confirm(options:{ var message : String; var detailedMessage : String; var buttons : Dynamic; }):Float;
+	static function confirm(options:{ var message : String; @:optional
+	var detailedMessage : String; @:optional
+	var buttons : Dynamic; }):Float;
 	/**
 		Open the dev tools for the current window. 
 	**/

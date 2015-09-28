@@ -190,17 +190,25 @@ package atom;
 	/**
 		Create a new pane to the left of this pane.
 	**/
-	function splitLeft(params:{ var items : Array<Dynamic>; var copyActiveItem : Bool; }):atom.Pane;
+	function splitLeft(params:{ @:optional
+	var items : Array<Dynamic>; @:optional
+	var copyActiveItem : Bool; }):atom.Pane;
 	/**
 		Create a new pane to the right of this pane.
 	**/
-	function splitRight(params:{ var items : Array<Dynamic>; var copyActiveItem : Bool; }):atom.Pane;
+	function splitRight(params:{ @:optional
+	var items : Array<Dynamic>; @:optional
+	var copyActiveItem : Bool; }):atom.Pane;
 	/**
 		Creates a new pane above the receiver.
 	**/
-	function splitUp(params:{ var items : Array<Dynamic>; var copyActiveItem : Bool; }):atom.Pane;
+	function splitUp(params:{ @:optional
+	var items : Array<Dynamic>; @:optional
+	var copyActiveItem : Bool; }):atom.Pane;
 	/**
 		Creates a new pane below the receiver.
 	**/
-	function splitDown(params:{ var items : Array<Dynamic>; var copyActiveItem : Bool; }):atom.Pane;
+	function splitDown(params:{ @:optional
+	var items : Array<Dynamic>; @:optional
+	var copyActiveItem : Bool; }):atom.Pane;
 }

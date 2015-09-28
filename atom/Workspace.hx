@@ -139,7 +139,9 @@ package atom;
 	/**
 		Adds a panel item to the bottom of the editor window.
 	**/
-	function addBottomPanel(options:{ var item : Dynamic; var visible : Bool; var priority : Float; }):atom.Panel;
+	function addBottomPanel(options:{ var item : Dynamic; @:optional
+	var visible : Bool; @:optional
+	var priority : Float; }):atom.Panel;
 	/**
 		Get an {Array} of all the panel items to the left of the editor window. 
 	**/
@@ -147,7 +149,9 @@ package atom;
 	/**
 		Adds a panel item to the left of the editor window.
 	**/
-	function addLeftPanel(options:{ var item : Dynamic; var visible : Bool; var priority : Float; }):atom.Panel;
+	function addLeftPanel(options:{ var item : Dynamic; @:optional
+	var visible : Bool; @:optional
+	var priority : Float; }):atom.Panel;
 	/**
 		Get an {Array} of all the panel items to the right of the editor window. 
 	**/
@@ -155,7 +159,9 @@ package atom;
 	/**
 		Adds a panel item to the right of the editor window.
 	**/
-	function addRightPanel(options:{ var item : Dynamic; var visible : Bool; var priority : Float; }):atom.Panel;
+	function addRightPanel(options:{ var item : Dynamic; @:optional
+	var visible : Bool; @:optional
+	var priority : Float; }):atom.Panel;
 	/**
 		Get an {Array} of all the panel items at the top of the editor window. 
 	**/
@@ -163,7 +169,9 @@ package atom;
 	/**
 		Adds a panel item to the top of the editor window above the tabs.
 	**/
-	function addTopPanel(options:{ var item : Dynamic; var visible : Bool; var priority : Float; }):atom.Panel;
+	function addTopPanel(options:{ var item : Dynamic; @:optional
+	var visible : Bool; @:optional
+	var priority : Float; }):atom.Panel;
 	/**
 		Get an {Array} of all the modal panel items 
 	**/
@@ -171,12 +179,15 @@ package atom;
 	/**
 		Adds a panel item as a modal dialog.
 	**/
-	function addModalPanel(options:{ var item : Dynamic; var visible : Bool; var priority : Float; }):atom.Panel;
+	function addModalPanel(options:{ var item : Dynamic; @:optional
+	var visible : Bool; @:optional
+	var priority : Float; }):atom.Panel;
 	function panelForItem(item:Dynamic):Dynamic;
 	/**
 		Performs a search across all the files in the workspace.
 	**/
-	function scan(regex:js.RegExp, options:{ var paths : Array<Dynamic>; var onPathsSearched : haxe.Constraints.Function; }, iterator:haxe.Constraints.Function):Dynamic;
+	function scan(regex:js.RegExp, options:{ var paths : Array<Dynamic>; @:optional
+	var onPathsSearched : haxe.Constraints.Function; }, iterator:haxe.Constraints.Function):Dynamic;
 	/**
 		Performs a replace across all the specified files in the project.
 	**/

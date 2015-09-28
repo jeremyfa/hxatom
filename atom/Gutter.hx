@@ -32,5 +32,8 @@ package atom;
 		is invalidated, or is destroyed, the decoration will be updated to reflect
 		the marker's state.
 	**/
-	function decorateMarker(marker:atom.Marker, decorationParams:{ var class_ : Dynamic; var onlyHead : Dynamic; var onlyEmpty : Dynamic; var onlyNonEmpty : Dynamic; }):atom.Decoration;
+	function decorateMarker(marker:atom.Marker, decorationParams:{ var class_ : Dynamic; @:optional
+	var onlyHead : Dynamic; @:optional
+	var onlyEmpty : Dynamic; @:optional
+	var onlyNonEmpty : Dynamic; }):atom.Decoration;
 }

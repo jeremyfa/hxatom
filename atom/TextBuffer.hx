@@ -172,15 +172,21 @@ package atom;
 	/**
 		Set the text in the given range.
 	**/
-	function setTextInRange(range:atom.Range, text:String, options:{ var normalizeLineEndings : Bool; var undo : String; }):atom.Range;
+	function setTextInRange(range:atom.Range, text:String, options:{ @:optional
+	var normalizeLineEndings : Bool; @:optional
+	var undo : String; }):atom.Range;
 	/**
 		Insert text at the given position.
 	**/
-	function insert(position:atom.Point, text:String, options:{ var normalizeLineEndings : Bool; var undo : String; }):atom.Range;
+	function insert(position:atom.Point, text:String, options:{ @:optional
+	var normalizeLineEndings : Bool; @:optional
+	var undo : String; }):atom.Range;
 	/**
 		Append text to the end of the buffer.
 	**/
-	function append(text:String, options:{ var normalizeLineEndings : Bool; var undo : String; }):atom.Range;
+	function append(text:String, options:{ @:optional
+	var normalizeLineEndings : Bool; @:optional
+	var undo : String; }):atom.Range;
 	/**
 		Delete the text in the given range.
 	**/

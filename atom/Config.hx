@@ -8,16 +8,21 @@ package atom;
 		than {::onDidChange} in that it will immediately call your callback with the
 		current value of the config entry.
 	**/
-	function observe(keyPath:String, options:{ var scopeDescriptor : atom.ScopeDescriptor; }, callback:Dynamic -> Dynamic):atom.Disposable;
+	function observe(keyPath:String, options:{ @:optional
+	var scopeDescriptor : atom.ScopeDescriptor; }, callback:Dynamic -> Dynamic):atom.Disposable;
 	/**
 		Add a listener for changes to a given key path. If `keyPath` is
 		not specified, your callback will be called on changes to any key.
 	**/
-	function onDidChange(keyPath:String, optional:{ var scopeDescriptor : atom.ScopeDescriptor; }, callback:{ var newValue : Dynamic; var oldValue : Dynamic; var keyPath : Dynamic; } -> Dynamic):atom.Disposable;
+	function onDidChange(keyPath:String, optional:{ @:optional
+	var scopeDescriptor : atom.ScopeDescriptor; }, callback:{ var newValue : Dynamic; var oldValue : Dynamic; var keyPath : Dynamic; } -> Dynamic):atom.Disposable;
 	/**
 		Retrieves the setting for the given key.
 	**/
-	function get(keyPath:String, options:{ var sources : Array<Dynamic>; var excludeSources : Array<Dynamic>; var scope : atom.ScopeDescriptor; }):Dynamic;
+	function get(keyPath:String, options:{ @:optional
+	var sources : Array<Dynamic>; @:optional
+	var excludeSources : Array<Dynamic>; @:optional
+	var scope : atom.ScopeDescriptor; }):Dynamic;
 	/**
 		Get all of the values for the given key-path, along with their
 		associated scope selector.
@@ -26,11 +31,15 @@ package atom;
 	/**
 		Sets the value for a configuration setting.
 	**/
-	function set(keyPath:String, value:Dynamic, options:{ var scopeSelector : String; var source : String; }):Bool;
+	function set(keyPath:String, value:Dynamic, options:{ @:optional
+	var scopeSelector : String; @:optional
+	var source : String; }):Bool;
 	/**
 		Restore the setting at `keyPath` to its default value.
 	**/
-	function unset(keyPath:String, options:{ var scopeSelector : String; var source : String; }):Dynamic;
+	function unset(keyPath:String, options:{ @:optional
+	var scopeSelector : String; @:optional
+	var source : String; }):Dynamic;
 	/**
 		Get an {Array} of all of the `source` {String}s with which
 		settings have been added via {::set}. 

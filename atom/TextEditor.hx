@@ -188,7 +188,9 @@ package atom;
 	/**
 		Set the text in the given {Range} in buffer coordinates.
 	**/
-	function setTextInBufferRange(range:atom.Range, text:String, options:{ var normalizeLineEndings : Bool; var undo : String; }):atom.Range;
+	function setTextInBufferRange(range:atom.Range, text:String, options:{ @:optional
+	var normalizeLineEndings : Bool; @:optional
+	var undo : String; }):atom.Range;
 	/**
 		For each selection, replace the selected text with the given text.
 	**/
@@ -357,7 +359,11 @@ package atom;
 		is invalidated, or is destroyed, the decoration will be updated to reflect
 		the marker's state.
 	**/
-	function decorateMarker(marker:atom.Marker, decorationParams:{ var type : Dynamic; var class_ : Dynamic; var onlyHead : Dynamic; var onlyEmpty : Dynamic; var onlyNonEmpty : Dynamic; var position : Dynamic; }):atom.Decoration;
+	function decorateMarker(marker:atom.Marker, decorationParams:{ var type : Dynamic; var class_ : Dynamic; @:optional
+	var onlyHead : Dynamic; @:optional
+	var onlyEmpty : Dynamic; @:optional
+	var onlyNonEmpty : Dynamic; @:optional
+	var position : Dynamic; }):atom.Decoration;
 	/**
 		Get all the decorations within a screen row range.
 	**/
@@ -921,7 +927,9 @@ package atom;
 	/**
 		Add a custom {Gutter}.
 	**/
-	function addGutter(options:{ var name : String; var priority : Float; var visible : Bool; }):atom.Gutter;
+	function addGutter(options:{ var name : String; @:optional
+	var priority : Float; @:optional
+	var visible : Bool; }):atom.Gutter;
 	/**
 		Get this editor's gutters.
 	**/

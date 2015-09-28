@@ -162,7 +162,8 @@ package atom;
 	/**
 		Replaces text at the current selection.
 	**/
-	function insertText(text:String, options:{ var select : Dynamic; var autoIndent : Dynamic; var autoIndentNewline : Dynamic; var autoDecreaseIndent : Dynamic; var normalizeLineEndings : Bool; var undo : Dynamic; }):Dynamic;
+	function insertText(text:String, options:{ var select : Dynamic; var autoIndent : Dynamic; var autoIndentNewline : Dynamic; var autoDecreaseIndent : Dynamic; @:optional
+	var normalizeLineEndings : Bool; var undo : Dynamic; }):Dynamic;
 	/**
 		Removes the first character before the selection if the selection
 		is empty otherwise it deletes the selection. 
