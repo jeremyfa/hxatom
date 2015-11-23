@@ -19,6 +19,11 @@ package atom;
 	**/
 	function onDidChangeActivePaneItem(callback:Dynamic -> Dynamic):atom.Disposable;
 	/**
+		Invoke the given callback when the active pane item stops
+		changing.
+	**/
+	function onDidStopChangingActivePaneItem(callback:Dynamic -> Dynamic):atom.Disposable;
+	/**
 		Invoke the given callback with the current active pane item and
 		with all future active pane items in the workspace.
 	**/
@@ -82,7 +87,11 @@ package atom;
 		activated. If no URI is given, or no registered opener can open
 		the URI, a new empty {TextEditor} will be created.
 	**/
-	function open(uri:String, options:{ var initialLine : Float; var initialColumn : Float; var split : Dynamic; var activatePane : Bool; var searchAllPanes : Bool; }):atom.TextEditor;
+	function open(uri:String, options:{ var initialLine : Float; var initialColumn : Float; var split : Dynamic; var activatePane : Bool; var activateItem : Bool; var searchAllPanes : Bool; }):atom.TextEditor;
+	/**
+		Create a new text editor.
+	**/
+	function buildTextEditor():atom.TextEditor;
 	/**
 		Asynchronously reopens the last-closed item's URI if it hasn't already been
 		reopened.
@@ -184,12 +193,12 @@ package atom;
 	var priority : Float; }):atom.Panel;
 	function panelForItem(item:Dynamic):Dynamic;
 	/**
-		Performs a search across all the files in the workspace.
+		Performs a search across all files in the workspace.
 	**/
 	function scan(regex:js.RegExp, options:{ var paths : Array<Dynamic>; @:optional
 	var onPathsSearched : haxe.Constraints.Function; }, iterator:haxe.Constraints.Function):Dynamic;
 	/**
 		Performs a replace across all the specified files in the project.
 	**/
-	function replace(regex:js.RegExp, replacementText:Dynamic, filePaths:Dynamic, iterator:Dynamic<Dynamic> -> Dynamic):Dynamic;
+	function replace(regex:js.RegExp, replacementText:String, filePaths:Array<Dynamic>, iterator:Dynamic<Dynamic> -> Dynamic):Dynamic;
 }

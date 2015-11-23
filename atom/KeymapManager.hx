@@ -14,6 +14,11 @@ package atom;
 	**/
 	function new(options:{ var defaultTarget : Dynamic; }):Void;
 	/**
+		Clear all registered key bindings and enqueued keystrokes. For use
+		in tests. 
+	**/
+	function clear():Dynamic;
+	/**
 		Unwatch all watched paths. 
 	**/
 	function destroy():Dynamic;

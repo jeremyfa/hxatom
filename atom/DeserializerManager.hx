@@ -6,9 +6,9 @@ package atom;
 	/**
 		Register the given class(es) as deserializers.
 	**/
-	function add(deserializers:Dynamic):Dynamic;
+	function add(deserializers:Array<Dynamic>):Dynamic;
 	/**
 		Deserialize the state and params.
 	**/
-	function deserialize(state:Dynamic<Dynamic>, params:Dynamic<Dynamic>):Dynamic;
+	function deserialize(state:Dynamic<Dynamic>):Dynamic;
 }

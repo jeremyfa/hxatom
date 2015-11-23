@@ -11,6 +11,10 @@ package atom;
 	**/
 	function new():Void;
 	/**
+		Clear out any existing subscribers. 
+	**/
+	function clear():Dynamic;
+	/**
 		Unsubscribe all handlers. 
 	**/
 	function dispose():Dynamic;

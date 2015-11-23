@@ -5,14 +5,14 @@
 package atom;
 @:jsRequire("atom", "Disposable") extern class Disposable {
 	/**
-		Ensure that an `object` correctly implements the `Disposable`
+		Ensure that `object` correctly implements the `Disposable`
 		contract.
 	**/
-	static function isDisposable(object:Dynamic):Bool;
+	static function isDisposable(object:Dynamic<Dynamic>):Bool;
 	/**
 		Construct a Disposable
 	**/
-	function new(disposalAction:Dynamic):Void;
+	function new(disposalAction:haxe.Constraints.Function):Void;
 	/**
 		Perform the disposal action, indicating that the resource associated
 		with this disposable is no longer needed.

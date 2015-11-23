@@ -68,26 +68,41 @@ class Convert {
             atomClasses.set(cls.name, true);
         }
 
-        sys.FileSystem.createDirectory("atom");
         var printer = new haxe.macro.Printer();
         for (key in api.classes.keys()) {
             var cls = api.classes[key];
             var fields:Array<Field> = [];
-            var forceStatic:Bool = (cls.name == "Atom");
+            var usedNames:Map<String,String> = new Map<String,String>();
+            var forceStatic:Bool = false;
 
             for (p in cls.classProperties) {
+                if (usedNames.exists(p.name)) {
+                    Sys.println("Ignore static var '" + p.name + "' of class " + cls.name + " because the name is already used by " + usedNames.get(p.name) + " '" + p.name + "'.");
+                    continue;
+                }
+                usedNames.set(p.name, "static var");
                 var f = convertProperty(p);
                 f.access.push(AStatic);
                 fields.push(f);
             }
 
             for (p in cls.instanceProperties) {
+                if (usedNames.exists(p.name)) {
+                    Sys.println("Ignore instance field '" + p.name + "' of class " + cls.name + " because the name is already used by " + usedNames.get(p.name) + " '" + p.name + "'.");
+                    continue;
+                }
+                usedNames.set(p.name, "instance var");
                 var m = convertProperty(p);
                 if (forceStatic) m.access.push(AStatic);
                 fields.push(m);
             }
 
             for (m in cls.classMethods) {
+                if (usedNames.exists(m.name)) {
+                    Sys.println("Ignore static method '" + m.name + "' of class " + cls.name + " because the name is already used by " + usedNames.get(m.name) + " '" + m.name + "'.");
+                    continue;
+                }
+                usedNames.set(m.name, "static method");
                 var f = convertMethod(m);
                 f.access.push(AStatic);
                 fields.push(f);
@@ -95,6 +110,11 @@ class Convert {
 
             if (cls.instanceMethods != null)
                 for (m in cls.instanceMethods) {
+                    if (usedNames.exists(m.name)) {
+                        Sys.println("Ignore instance method '" + m.name + "' of class " + cls.name + " because the name is already used by " + usedNames.get(m.name) + " '" + m.name + "'.");
+                        continue;
+                    }
+                    usedNames.set(m.name, "instance method");
                     var f = convertMethod(m);
                     if (f.name == "constructor")
                         f.name = "new";
@@ -108,32 +128,17 @@ class Convert {
                 sup = {pack: ["atom"], name: cls.superClass};
             }
 
-            var s;
-            if (cls.name == "Atom") {
-                s = printer.printTypeDefinition({
-                    pos: pos,
-                    pack: ["atom"],
-                    name: cls.name,
-                    isExtern: true,
-                    kind: TDClass(sup),
-                    fields: fields,
-                    meta: [
-                        {name: ":native", params: [{expr: EConst(CString("atom")), pos: pos}], pos: pos}
-                    ]
-                });
-            } else {
-                s = printer.printTypeDefinition({
-                    pos: pos,
-                    pack: ["atom"],
-                    name: cls.name,
-                    isExtern: true,
-                    kind: TDClass(sup),
-                    fields: fields,
-                    meta: [
-                        {name: ":jsRequire", params: [{expr: EConst(CString("atom")), pos: pos}, {expr: EConst(CString(cls.name)), pos: pos}], pos: pos}
-                    ]
-                });
-            }
+            var s = printer.printTypeDefinition({
+                pos: pos,
+                pack: ["atom"],
+                name: cls.name,
+                isExtern: true,
+                kind: TDClass(sup),
+                fields: fields,
+                meta: [
+                    {name: ":jsRequire", params: [{expr: EConst(CString("atom")), pos: pos}, {expr: EConst(CString(cls.name)), pos: pos}], pos: pos}
+                ]
+            });
 
             if (cls.summary != null) {
                 s = "/**\n\t" + cls.summary.replace("\n", "\n\t") + "\n**/\n" + s;

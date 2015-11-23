@@ -97,9 +97,14 @@ package atom;
 	function selectToFirstCharacterOfLine():Dynamic;
 	/**
 		Selects all the text from the current cursor position to the end of
-		the line. 
+		the screen line. 
 	**/
 	function selectToEndOfLine():Dynamic;
+	/**
+		Selects all the text from the current cursor position to the end of
+		the buffer line. 
+	**/
+	function selectToEndOfBufferLine():Dynamic;
 	/**
 		Selects all the text from the current cursor position to the
 		beginning of the word. 
@@ -248,9 +253,13 @@ package atom;
 	**/
 	function toggleLineComments():Dynamic;
 	/**
-		Cuts the selection until the end of the line. 
+		Cuts the selection until the end of the screen line. 
 	**/
 	function cutToEndOfLine():Dynamic;
+	/**
+		Cuts the selection until the end of the buffer line. 
+	**/
+	function cutToEndOfBufferLine():Dynamic;
 	/**
 		Copies the selection to the clipboard and then deletes it.
 	**/

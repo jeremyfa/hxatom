@@ -33,6 +33,7 @@ package atom;
 	function onWillThrowWatchError(callback:{ var error : Dynamic<Dynamic>; var handle : haxe.Constraints.Function; } -> Dynamic):Dynamic;
 	function isFile():Bool;
 	function isDirectory():Bool;
+	function isSymbolicLink():Bool;
 	function exists():Bool;
 	function existsSync():Bool;
 	/**

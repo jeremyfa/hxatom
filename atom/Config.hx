@@ -15,7 +15,7 @@ package atom;
 		not specified, your callback will be called on changes to any key.
 	**/
 	function onDidChange(keyPath:String, optional:{ @:optional
-	var scopeDescriptor : atom.ScopeDescriptor; }, callback:{ var newValue : Dynamic; var oldValue : Dynamic; var keyPath : Dynamic; } -> Dynamic):atom.Disposable;
+	var scopeDescriptor : atom.ScopeDescriptor; }, callback:{ var newValue : Dynamic; var oldValue : Dynamic; } -> Dynamic):atom.Disposable;
 	/**
 		Retrieves the setting for the given key.
 	**/

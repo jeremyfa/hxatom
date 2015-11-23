@@ -11,13 +11,14 @@ package atom;
 		Creates the directory on disk that corresponds to `::getPath()` if
 		no such directory already exists.
 	**/
-	function create(mode:Float):Dynamic;
+	function create(mode:Float):js.Promise<Dynamic>;
 	/**
 		Invoke the given callback when the directory's contents change.
 	**/
 	function onDidChange(callback:haxe.Constraints.Function):atom.Disposable;
 	function isFile():Bool;
 	function isDirectory():Bool;
+	function isSymbolicLink():Bool;
 	function exists():Bool;
 	function existsSync():Bool;
 	/**

@@ -20,7 +20,7 @@ package atom;
 		Moves a cursor to a given screen position.
 	**/
 	function setScreenPosition(screenPosition:Array<Dynamic>, options:{ var autoscroll : atom.TextEditor; }):Dynamic;
-	function getScreenPosition():Dynamic;
+	function getScreenPosition():atom.Point;
 	/**
 		Moves a cursor to a given buffer position.
 	**/

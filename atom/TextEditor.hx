@@ -2,7 +2,8 @@
 	This class represents all essential editing state for a single
 	{TextBuffer}, including cursor and selection positions, folds, and soft wraps.
 	If you're manipulating the state of an editor, use this class. If you're
-	interested in the visual appearance of editors, use {TextEditorView} instead.
+	interested in the visual appearance of editors, use {TextEditorElement}
+	instead.
 **/
 package atom;
 @:jsRequire("atom", "TextEditor") extern class TextEditor {
@@ -360,6 +361,7 @@ package atom;
 		the marker's state.
 	**/
 	function decorateMarker(marker:atom.Marker, decorationParams:{ var type : Dynamic; var class_ : Dynamic; @:optional
+	var item : Array<Dynamic>; @:optional
 	var onlyHead : Dynamic; @:optional
 	var onlyEmpty : Dynamic; @:optional
 	var onlyNonEmpty : Dynamic; @:optional
@@ -862,10 +864,16 @@ package atom;
 	function pasteText(options:Dynamic):Dynamic;
 	/**
 		For each selection, if the selection is empty, cut all characters
-		of the containing line following the cursor. Otherwise cut the selected
+		of the containing screen line following the cursor. Otherwise cut the selected
 		text. 
 	**/
 	function cutToEndOfLine():Dynamic;
+	/**
+		For each selection, if the selection is empty, cut all characters
+		of the containing buffer line following the cursor. Otherwise cut the
+		selected text. 
+	**/
+	function cutToEndOfBufferLine():Dynamic;
 	/**
 		Fold the most recent cursor's row based on its indentation level.
 	**/
@@ -951,14 +959,6 @@ package atom;
 		Scrolls the editor to the given screen position.
 	**/
 	function scrollToScreenPosition(screenPosition:Dynamic<Dynamic>, options:{ var center : Dynamic; }):Dynamic;
-	/**
-		Scrolls the editor to the top 
-	**/
-	function scrollToTop():Dynamic;
-	/**
-		Scrolls the editor to the bottom 
-	**/
-	function scrollToBottom():Dynamic;
 	/**
 		Retrieves the greyed out placeholder of a mini editor.
 	**/
