@@ -1,0 +1,4 @@
+-main Example
+-js ../lib/example.js
+-lib hxnodejs
+-lib atom
