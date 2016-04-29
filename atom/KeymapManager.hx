@@ -8,7 +8,7 @@ package atom;
 	/**
 		Create a keydown DOM event for testing purposes.
 	**/
-	static function buildKeydownEvent(key:Dynamic, options:{ var ctrl : Bool; var alt : Bool; var shift : Bool; var cmd : Bool; var which : Float; var target : Dynamic; }):Dynamic;
+	static function buildKeydownEvent(key:Dynamic, ?options:{ var ctrl : Bool; var alt : Bool; var shift : Bool; var cmd : Bool; var which : Float; var target : Dynamic; }):Dynamic;
 	/**
 		Create a new KeymapManager.
 	**/

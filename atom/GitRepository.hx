@@ -57,7 +57,7 @@ package atom;
 	**/
 	function getCachedUpstreamAheadBehindCount(path:String):Dynamic<Dynamic>;
 	function getConfigValue(path:String):Dynamic;
-	function getOriginURL(path:String):Dynamic;
+	function getOriginURL(?path:String):Dynamic;
 	function getUpstreamBranch(path:String):Dynamic;
 	/**
 		Gets all the local and remote references.

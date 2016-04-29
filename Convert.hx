@@ -186,20 +186,20 @@ class Convert {
         var meta:Null<haxe.macro.Metadata> = [];
         if (m.arguments != null) {
             for (a in m.arguments)
-                args.push({name: a.name, type: convertType(a.type, a.children)});
+                args.push({name: a.name, type: convertType(a.type, a.children), opt: a.isOptional});
         }
         else if (m.titledArguments != null) {
             var i = 0;
             for (ta in m.titledArguments) {
                 if (i == 0) {
                     for (a in ta.arguments)
-                        args.push({name: a.name, type: convertType(a.type, a.children)});
+                        args.push({name: a.name, type: convertType(a.type, a.children), opt: a.isOptional});
                 } else {
                     // Use @:overload meta in case there are multiple
                     // ways of calling the method
                     var args:Array<FunctionArg> = [];
                     for (a in ta.arguments)
-                        args.push({name: a.name, type: convertType(a.type, a.children)});
+                        args.push({name: a.name, type: convertType(a.type, a.children), opt: a.isOptional});
                     meta.push({name: ":overload", params: [{expr: EFunction(null, {
                         args: args,
                         params: null,

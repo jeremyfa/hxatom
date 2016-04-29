@@ -11,35 +11,35 @@ package atom;
 	/**
 		Add a success notification.
 	**/
-	function addSuccess(message:String, options:{ @:optional
+	function addSuccess(message:String, ?options:{ @:optional
 	var detail : String; @:optional
 	var dismissable : Bool; @:optional
 	var icon : String; }):Dynamic;
 	/**
 		Add an informational notification.
 	**/
-	function addInfo(message:String, options:{ @:optional
+	function addInfo(message:String, ?options:{ @:optional
 	var detail : String; @:optional
 	var dismissable : Bool; @:optional
 	var icon : String; }):Dynamic;
 	/**
 		Add a warning notification.
 	**/
-	function addWarning(message:String, options:{ @:optional
+	function addWarning(message:String, ?options:{ @:optional
 	var detail : String; @:optional
 	var dismissable : Bool; @:optional
 	var icon : String; }):Dynamic;
 	/**
 		Add an error notification.
 	**/
-	function addError(message:String, options:{ @:optional
+	function addError(message:String, ?options:{ @:optional
 	var detail : String; @:optional
 	var dismissable : Bool; @:optional
 	var icon : String; }):Dynamic;
 	/**
 		Add a fatal error notification.
 	**/
-	function addFatalError(message:String, options:{ @:optional
+	function addFatalError(message:String, ?options:{ @:optional
 	var detail : String; @:optional
 	var dismissable : Bool; @:optional
 	var icon : String; }):Dynamic;

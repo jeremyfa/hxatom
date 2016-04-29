@@ -115,11 +115,11 @@ package atom;
 	/**
 		Add the given item to the pane.
 	**/
-	function addItem(item:Dynamic, index:Float):Dynamic;
+	function addItem(item:Dynamic, ?index:Float):Dynamic;
 	/**
 		Add the given items to the pane.
 	**/
-	function addItems(items:Array<Dynamic>, index:Float):Array<Dynamic>;
+	function addItems(items:Array<Dynamic>, ?index:Float):Array<Dynamic>;
 	/**
 		Move the given item to the given index.
 	**/
@@ -152,16 +152,16 @@ package atom;
 		Prompt the user for a location and save the active item with the
 		path they select.
 	**/
-	function saveActiveItemAs(nextAction:haxe.Constraints.Function):Dynamic;
+	function saveActiveItemAs(?nextAction:haxe.Constraints.Function):Dynamic;
 	/**
 		Save the given item.
 	**/
-	function saveItem(item:Dynamic, nextAction:haxe.Constraints.Function):Dynamic;
+	function saveItem(item:Dynamic, ?nextAction:haxe.Constraints.Function):Dynamic;
 	/**
 		Prompt the user for a location and save the active item with the
 		path they select.
 	**/
-	function saveItemAs(item:Dynamic, nextAction:haxe.Constraints.Function):Dynamic;
+	function saveItemAs(item:Dynamic, ?nextAction:haxe.Constraints.Function):Dynamic;
 	/**
 		Save all items. 
 	**/
@@ -190,25 +190,25 @@ package atom;
 	/**
 		Create a new pane to the left of this pane.
 	**/
-	function splitLeft(params:{ @:optional
+	function splitLeft(?params:{ @:optional
 	var items : Array<Dynamic>; @:optional
 	var copyActiveItem : Bool; }):atom.Pane;
 	/**
 		Create a new pane to the right of this pane.
 	**/
-	function splitRight(params:{ @:optional
+	function splitRight(?params:{ @:optional
 	var items : Array<Dynamic>; @:optional
 	var copyActiveItem : Bool; }):atom.Pane;
 	/**
 		Creates a new pane above the receiver.
 	**/
-	function splitUp(params:{ @:optional
+	function splitUp(?params:{ @:optional
 	var items : Array<Dynamic>; @:optional
 	var copyActiveItem : Bool; }):atom.Pane;
 	/**
 		Creates a new pane below the receiver.
 	**/
-	function splitDown(params:{ @:optional
+	function splitDown(?params:{ @:optional
 	var items : Array<Dynamic>; @:optional
 	var copyActiveItem : Bool; }):atom.Pane;
 }

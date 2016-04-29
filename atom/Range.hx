@@ -46,7 +46,7 @@ package atom;
 		Build and return a new range by translating this range's start and
 		end points by the given delta(s).
 	**/
-	function translate(startDelta:atom.Point, endDelta:atom.Point):atom.Range;
+	function translate(startDelta:atom.Point, ?endDelta:atom.Point):atom.Range;
 	/**
 		Build and return a new range by traversing this range's start and
 		end points by the given delta.
@@ -61,7 +61,7 @@ package atom;
 	/**
 		Determines whether this range intersects with the argument.
 	**/
-	function intersectsWith(otherRange:atom.Range, exclusive:Bool):Bool;
+	function intersectsWith(otherRange:atom.Range, ?exclusive:Bool):Bool;
 	function containsRange(otherRange:atom.Range, exclusive:Dynamic):Bool;
 	function containsPoint(point:atom.Point, exclusive:Dynamic):Bool;
 	function intersectsRow(row:Float):Bool;

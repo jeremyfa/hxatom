@@ -87,7 +87,7 @@ package atom;
 		activated. If no URI is given, or no registered opener can open
 		the URI, a new empty {TextEditor} will be created.
 	**/
-	function open(uri:String, options:{ var initialLine : Float; var initialColumn : Float; var split : Dynamic; var activatePane : Bool; var activateItem : Bool; var searchAllPanes : Bool; }):atom.TextEditor;
+	function open(?uri:String, ?options:{ var initialLine : Float; var initialColumn : Float; var split : Dynamic; var activatePane : Bool; var activateItem : Bool; var searchAllPanes : Bool; }):atom.TextEditor;
 	/**
 		Create a new text editor.
 	**/
@@ -195,7 +195,7 @@ package atom;
 	/**
 		Performs a search across all files in the workspace.
 	**/
-	function scan(regex:js.RegExp, options:{ var paths : Array<Dynamic>; @:optional
+	function scan(regex:js.RegExp, ?options:{ var paths : Array<Dynamic>; @:optional
 	var onPathsSearched : haxe.Constraints.Function; }, iterator:haxe.Constraints.Function):Dynamic;
 	/**
 		Performs a replace across all the specified files in the project.

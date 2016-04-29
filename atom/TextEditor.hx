@@ -189,13 +189,13 @@ package atom;
 	/**
 		Set the text in the given {Range} in buffer coordinates.
 	**/
-	function setTextInBufferRange(range:atom.Range, text:String, options:{ @:optional
+	function setTextInBufferRange(range:atom.Range, text:String, ?options:{ @:optional
 	var normalizeLineEndings : Bool; @:optional
 	var undo : String; }):atom.Range;
 	/**
 		For each selection, replace the selected text with the given text.
 	**/
-	function insertText(text:String, options:Dynamic):haxe.extern.EitherType<atom.Range, Bool>;
+	function insertText(text:String, ?options:Dynamic):haxe.extern.EitherType<atom.Range, Bool>;
 	/**
 		For each selection, replace the selected text with a newline. 
 	**/
@@ -300,7 +300,7 @@ package atom;
 	/**
 		Batch multiple operations as a single undo/redo step.
 	**/
-	function transact(groupingInterval:Float, fn:haxe.Constraints.Function):Dynamic;
+	function transact(?groupingInterval:Float, fn:haxe.Constraints.Function):Dynamic;
 	/**
 		Abort an open transaction, undoing any operations performed so far
 		within the transaction. 
@@ -324,11 +324,11 @@ package atom;
 	/**
 		Convert a position in buffer-coordinates to screen-coordinates.
 	**/
-	function screenPositionForBufferPosition(bufferPosition:atom.Point, options:Dynamic):atom.Point;
+	function screenPositionForBufferPosition(bufferPosition:atom.Point, ?options:Dynamic):atom.Point;
 	/**
 		Convert a position in screen-coordinates to buffer-coordinates.
 	**/
-	function bufferPositionForScreenPosition(bufferPosition:atom.Point, options:Dynamic):atom.Point;
+	function bufferPositionForScreenPosition(bufferPosition:atom.Point, ?options:Dynamic):atom.Point;
 	/**
 		Convert a range in buffer-coordinates to screen-coordinates.
 	**/
@@ -349,12 +349,12 @@ package atom;
 	/**
 		Clip the given {Point} to a valid position on screen.
 	**/
-	function clipScreenPosition(screenPosition:atom.Point, options:{ var wrapBeyondNewlines : Bool; var wrapAtSoftNewlines : Bool; var screenLine : Bool; }):atom.Point;
+	function clipScreenPosition(screenPosition:atom.Point, ?options:{ var wrapBeyondNewlines : Bool; var wrapAtSoftNewlines : Bool; var screenLine : Bool; }):atom.Point;
 	/**
 		Clip the start and end of the given range to valid positions on screen.
 		See {::clipScreenPosition} for more information.
 	**/
-	function clipScreenRange(range:atom.Range, options:atom.Range):Dynamic;
+	function clipScreenRange(range:atom.Range, ?options:atom.Range):Dynamic;
 	/**
 		Adds a decoration that tracks a {Marker}. When the marker moves,
 		is invalidated, or is destroyed, the decoration will be updated to reflect
@@ -373,23 +373,23 @@ package atom;
 	/**
 		Get all decorations.
 	**/
-	function getDecorations(propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
+	function getDecorations(?propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
 	/**
 		Get all decorations of type 'line'.
 	**/
-	function getLineDecorations(propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
+	function getLineDecorations(?propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
 	/**
 		Get all decorations of type 'line-number'.
 	**/
-	function getLineNumberDecorations(propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
+	function getLineNumberDecorations(?propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
 	/**
 		Get all decorations of type 'highlight'.
 	**/
-	function getHighlightDecorations(propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
+	function getHighlightDecorations(?propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
 	/**
 		Get all decorations of type 'overlay'.
 	**/
-	function getOverlayDecorations(propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
+	function getOverlayDecorations(?propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
 	/**
 		Create a marker with the given range in buffer coordinates. This
 		marker will maintain its logical location as the buffer is changed, so if
@@ -407,11 +407,11 @@ package atom;
 	/**
 		Mark the given position in buffer coordinates.
 	**/
-	function markBufferPosition(position:atom.Point, options:Dynamic):atom.Marker;
+	function markBufferPosition(position:atom.Point, ?options:Dynamic):atom.Marker;
 	/**
 		Mark the given position in screen coordinates.
 	**/
-	function markScreenPosition(position:atom.Point, options:Dynamic):atom.Marker;
+	function markScreenPosition(position:atom.Point, ?options:Dynamic):atom.Marker;
 	/**
 		Find all {Marker}s that match the given properties.
 	**/
@@ -445,7 +445,7 @@ package atom;
 	/**
 		Move the cursor to the given position in buffer coordinates.
 	**/
-	function setCursorBufferPosition(position:atom.Point, options:{ var autoscroll : Dynamic; }):Dynamic;
+	function setCursorBufferPosition(position:atom.Point, ?options:{ var autoscroll : Dynamic; }):Dynamic;
 	/**
 		Get a {Cursor} at given screen coordinates {Point}
 	**/
@@ -462,7 +462,7 @@ package atom;
 	/**
 		Move the cursor to the given position in screen coordinates.
 	**/
-	function setCursorScreenPosition(position:atom.Point, options:{ var autoscroll : Dynamic; }):Dynamic;
+	function setCursorScreenPosition(position:atom.Point, ?options:{ var autoscroll : Dynamic; }):Dynamic;
 	/**
 		Add a cursor at the given position in buffer coordinates.
 	**/
@@ -475,19 +475,19 @@ package atom;
 	/**
 		Move every cursor up one row in screen coordinates.
 	**/
-	function moveUp(lineCount:Float):Dynamic;
+	function moveUp(?lineCount:Float):Dynamic;
 	/**
 		Move every cursor down one row in screen coordinates.
 	**/
-	function moveDown(lineCount:Float):Dynamic;
+	function moveDown(?lineCount:Float):Dynamic;
 	/**
 		Move every cursor left one column.
 	**/
-	function moveLeft(columnCount:Float):Dynamic;
+	function moveLeft(?columnCount:Float):Dynamic;
 	/**
 		Move every cursor right one column.
 	**/
-	function moveRight(columnCount:Float):Dynamic;
+	function moveRight(?columnCount:Float):Dynamic;
 	/**
 		Move every cursor to the beginning of its line in buffer coordinates. 
 	**/
@@ -553,7 +553,7 @@ package atom;
 	**/
 	function moveToBeginningOfPreviousParagraph():Dynamic;
 	function getLastCursor():atom.Cursor;
-	function getWordUnderCursor(options:Dynamic):Dynamic;
+	function getWordUnderCursor(?options:Dynamic):Dynamic;
 	/**
 		Get an Array of all {Cursor}s. 
 	**/
@@ -580,12 +580,12 @@ package atom;
 		Set the selected range in buffer coordinates. If there are multiple
 		selections, they are reduced to a single selection with the given range.
 	**/
-	function setSelectedBufferRange(bufferRange:atom.Range, options:{ var reversed : Bool; var preserveFolds : Bool; }):Dynamic;
+	function setSelectedBufferRange(bufferRange:atom.Range, ?options:{ var reversed : Bool; var preserveFolds : Bool; }):Dynamic;
 	/**
 		Set the selected ranges in buffer coordinates. If there are multiple
 		selections, they are replaced by new selections with the given ranges.
 	**/
-	function setSelectedBufferRanges(bufferRanges:Array<Dynamic>, options:{ var reversed : Bool; var preserveFolds : Bool; }):Dynamic;
+	function setSelectedBufferRanges(bufferRanges:Array<Dynamic>, ?options:{ var reversed : Bool; var preserveFolds : Bool; }):Dynamic;
 	/**
 		Get the {Range} of the most recently added selection in screen
 		coordinates.
@@ -599,20 +599,20 @@ package atom;
 		Set the selected range in screen coordinates. If there are multiple
 		selections, they are reduced to a single selection with the given range.
 	**/
-	function setSelectedScreenRange(screenRange:atom.Range, options:{ var reversed : Bool; }):Dynamic;
+	function setSelectedScreenRange(screenRange:atom.Range, ?options:{ var reversed : Bool; }):Dynamic;
 	/**
 		Set the selected ranges in screen coordinates. If there are multiple
 		selections, they are replaced by new selections with the given ranges.
 	**/
-	function setSelectedScreenRanges(screenRanges:Array<Dynamic>, options:{ var reversed : Bool; }):Dynamic;
+	function setSelectedScreenRanges(screenRanges:Array<Dynamic>, ?options:{ var reversed : Bool; }):Dynamic;
 	/**
 		Add a selection for the given range in buffer coordinates.
 	**/
-	function addSelectionForBufferRange(bufferRange:atom.Range, options:{ var reversed : Bool; }):atom.Selection;
+	function addSelectionForBufferRange(bufferRange:atom.Range, ?options:{ var reversed : Bool; }):atom.Selection;
 	/**
 		Add a selection for the given range in screen coordinates.
 	**/
-	function addSelectionForScreenRange(screenRange:atom.Range, options:{ var reversed : Bool; }):atom.Selection;
+	function addSelectionForScreenRange(screenRange:atom.Range, ?options:{ var reversed : Bool; }):atom.Selection;
 	/**
 		Select from the current cursor position to the given position in
 		buffer coordinates.
@@ -627,22 +627,22 @@ package atom;
 		Move the cursor of each selection one character upward while
 		preserving the selection's tail position.
 	**/
-	function selectUp(rowCount:Float):Dynamic;
+	function selectUp(?rowCount:Float):Dynamic;
 	/**
 		Move the cursor of each selection one character downward while
 		preserving the selection's tail position.
 	**/
-	function selectDown(rowCount:Float):Dynamic;
+	function selectDown(?rowCount:Float):Dynamic;
 	/**
 		Move the cursor of each selection one character leftward while
 		preserving the selection's tail position.
 	**/
-	function selectLeft(columnCount:Float):Dynamic;
+	function selectLeft(?columnCount:Float):Dynamic;
 	/**
 		Move the cursor of each selection one character rightward while
 		preserving the selection's tail position.
 	**/
-	function selectRight(columnCount:Float):Dynamic;
+	function selectRight(?columnCount:Float):Dynamic;
 	/**
 		Select from the top of the buffer to the end of the last selection
 		in the buffer.
@@ -808,7 +808,7 @@ package atom;
 	/**
 		Set the indentation level for the given buffer row.
 	**/
-	function setIndentationForBufferRow(bufferRow:Float, newLevel:Float, options:{ var preserveLeadingWhitespace : Dynamic; }):Dynamic;
+	function setIndentationForBufferRow(bufferRow:Float, newLevel:Float, ?options:{ var preserveLeadingWhitespace : Dynamic; }):Dynamic;
 	/**
 		Indent rows intersecting selections by one level. 
 	**/
@@ -861,7 +861,7 @@ package atom;
 		For each selection, replace the selected text with the contents of
 		the clipboard.
 	**/
-	function pasteText(options:Dynamic):Dynamic;
+	function pasteText(?options:Dynamic):Dynamic;
 	/**
 		For each selection, if the selection is empty, cut all characters
 		of the containing screen line following the cursor. Otherwise cut the selected
@@ -950,15 +950,15 @@ package atom;
 		Scroll the editor to reveal the most recently added cursor if it is
 		off-screen.
 	**/
-	function scrollToCursorPosition(options:{ var center : Dynamic; }):Dynamic;
+	function scrollToCursorPosition(?options:{ var center : Dynamic; }):Dynamic;
 	/**
 		Scrolls the editor to the given buffer position.
 	**/
-	function scrollToBufferPosition(bufferPosition:Dynamic<Dynamic>, options:{ var center : Dynamic; }):Dynamic;
+	function scrollToBufferPosition(bufferPosition:Dynamic<Dynamic>, ?options:{ var center : Dynamic; }):Dynamic;
 	/**
 		Scrolls the editor to the given screen position.
 	**/
-	function scrollToScreenPosition(screenPosition:Dynamic<Dynamic>, options:{ var center : Dynamic; }):Dynamic;
+	function scrollToScreenPosition(screenPosition:Dynamic<Dynamic>, ?options:{ var center : Dynamic; }):Dynamic;
 	/**
 		Retrieves the greyed out placeholder of a mini editor.
 	**/

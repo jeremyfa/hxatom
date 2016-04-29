@@ -15,12 +15,12 @@ package atom;
 	/**
 		Modifies the screen range for the selection.
 	**/
-	function setScreenRange(screenRange:atom.Range, options:Dynamic<Dynamic>):Dynamic;
+	function setScreenRange(screenRange:atom.Range, ?options:Dynamic<Dynamic>):Dynamic;
 	function getBufferRange():atom.Range;
 	/**
 		Modifies the buffer {Range} for the selection.
 	**/
-	function setBufferRange(bufferRange:atom.Range, options:{ var preserveFolds : Dynamic; var autoscroll : Bool; }):Dynamic;
+	function setBufferRange(bufferRange:atom.Range, ?options:{ var preserveFolds : Dynamic; var autoscroll : Bool; }):Dynamic;
 	function getBufferRowRange():Dynamic;
 	/**
 		Determines if the selection contains anything. 
@@ -44,7 +44,7 @@ package atom;
 	/**
 		Clears the selection, moving the marker to the head.
 	**/
-	function clear(options:{ var autoscroll : Bool; }):Dynamic;
+	function clear(?options:{ var autoscroll : Bool; }):Dynamic;
 	/**
 		Selects the text from the current cursor position to a given screen
 		position.
@@ -58,19 +58,19 @@ package atom;
 	/**
 		Selects the text one position right of the cursor.
 	**/
-	function selectRight(columnCount:Float):Dynamic;
+	function selectRight(?columnCount:Float):Dynamic;
 	/**
 		Selects the text one position left of the cursor.
 	**/
-	function selectLeft(columnCount:Float):Dynamic;
+	function selectLeft(?columnCount:Float):Dynamic;
 	/**
 		Selects all the text one position above the cursor.
 	**/
-	function selectUp(rowCount:Float):Dynamic;
+	function selectUp(?rowCount:Float):Dynamic;
 	/**
 		Selects all the text one position below the cursor.
 	**/
-	function selectDown(rowCount:Float):Dynamic;
+	function selectDown(?rowCount:Float):Dynamic;
 	/**
 		Selects all the text from the current cursor position to the top of
 		the buffer. 
@@ -167,7 +167,7 @@ package atom;
 	/**
 		Replaces text at the current selection.
 	**/
-	function insertText(text:String, options:{ var select : Dynamic; var autoIndent : Dynamic; var autoIndentNewline : Dynamic; var autoDecreaseIndent : Dynamic; @:optional
+	function insertText(text:String, ?options:{ var select : Dynamic; var autoIndent : Dynamic; var autoIndentNewline : Dynamic; var autoDecreaseIndent : Dynamic; @:optional
 	var normalizeLineEndings : Bool; var undo : Dynamic; }):Dynamic;
 	/**
 		Removes the first character before the selection if the selection
@@ -288,7 +288,7 @@ package atom;
 		Combines the given selection into this selection and then destroys
 		the given selection.
 	**/
-	function merge(otherSelection:atom.Selection, options:Dynamic<Dynamic>):Dynamic;
+	function merge(otherSelection:atom.Selection, ?options:Dynamic<Dynamic>):Dynamic;
 	/**
 		Compare this selection's buffer range to another selection's buffer
 		range.

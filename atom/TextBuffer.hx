@@ -172,19 +172,19 @@ package atom;
 	/**
 		Set the text in the given range.
 	**/
-	function setTextInRange(range:atom.Range, text:String, options:{ @:optional
+	function setTextInRange(range:atom.Range, text:String, ?options:{ @:optional
 	var normalizeLineEndings : Bool; @:optional
 	var undo : String; }):atom.Range;
 	/**
 		Insert text at the given position.
 	**/
-	function insert(position:atom.Point, text:String, options:{ @:optional
+	function insert(position:atom.Point, text:String, ?options:{ @:optional
 	var normalizeLineEndings : Bool; @:optional
 	var undo : String; }):atom.Range;
 	/**
 		Append text to the end of the buffer.
 	**/
-	function append(text:String, options:{ @:optional
+	function append(text:String, ?options:{ @:optional
 	var normalizeLineEndings : Bool; @:optional
 	var undo : String; }):atom.Range;
 	/**
@@ -237,7 +237,7 @@ package atom;
 	/**
 		Batch multiple operations as a single undo/redo step.
 	**/
-	function transact(groupingInterval:Float, fn:haxe.Constraints.Function):Dynamic;
+	function transact(?groupingInterval:Float, fn:haxe.Constraints.Function):Dynamic;
 	/**
 		Clear the undo stack. 
 	**/

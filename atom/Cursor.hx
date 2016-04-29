@@ -19,12 +19,12 @@ package atom;
 	/**
 		Moves a cursor to a given screen position.
 	**/
-	function setScreenPosition(screenPosition:Array<Dynamic>, options:{ var autoscroll : atom.TextEditor; }):Dynamic;
+	function setScreenPosition(screenPosition:Array<Dynamic>, ?options:{ var autoscroll : atom.TextEditor; }):Dynamic;
 	function getScreenPosition():atom.Point;
 	/**
 		Moves a cursor to a given buffer position.
 	**/
-	function setBufferPosition(bufferPosition:Array<Dynamic>, options:{ var autoscroll : Bool; }):Dynamic;
+	function setBufferPosition(bufferPosition:Array<Dynamic>, ?options:{ var autoscroll : Bool; }):Dynamic;
 	function getBufferPosition():Dynamic;
 	function getScreenRow():Dynamic;
 	function getScreenColumn():Dynamic;
@@ -42,7 +42,7 @@ package atom;
 	**/
 	function isSurroundedByWhitespace():Bool;
 	function isBetweenWordAndNonWord():Dynamic;
-	function isInsideWord(options:{ var wordRegex : js.RegExp; }):Dynamic;
+	function isInsideWord(?options:{ var wordRegex : js.RegExp; }):Dynamic;
 	function getIndentLevel():Dynamic;
 	/**
 		Retrieves the scope descriptor for the cursor's current position.
@@ -56,19 +56,19 @@ package atom;
 	/**
 		Moves the cursor up one screen row.
 	**/
-	function moveUp(rowCount:Float, options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
+	function moveUp(?rowCount:Float, ?options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
 	/**
 		Moves the cursor down one screen row.
 	**/
-	function moveDown(rowCount:Float, options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
+	function moveDown(?rowCount:Float, ?options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
 	/**
 		Moves the cursor left one screen column.
 	**/
-	function moveLeft(columnCount:Float, options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
+	function moveLeft(?columnCount:Float, ?options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
 	/**
 		Moves the cursor right one screen column.
 	**/
-	function moveRight(columnCount:Float, options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
+	function moveRight(?columnCount:Float, ?options:{ var moveToEndOfSelection : Dynamic; }):Dynamic;
 	/**
 		Moves the cursor to the top of the buffer. 
 	**/
@@ -139,22 +139,22 @@ package atom;
 		Moves the cursor to the beginning of the previous paragraph 
 	**/
 	function moveToBeginningOfPreviousParagraph():Dynamic;
-	function getPreviousWordBoundaryBufferPosition(options:{ var wordRegex : js.RegExp; }):Dynamic;
-	function getNextWordBoundaryBufferPosition(options:{ var wordRegex : js.RegExp; }):Dynamic;
+	function getPreviousWordBoundaryBufferPosition(?options:{ var wordRegex : js.RegExp; }):Dynamic;
+	function getNextWordBoundaryBufferPosition(?options:{ var wordRegex : js.RegExp; }):Dynamic;
 	/**
 		Retrieves the buffer position of where the current word starts.
 	**/
-	function getBeginningOfCurrentWordBufferPosition(options:{ var wordRegex : js.RegExp; var includeNonWordCharacters : Bool; var allowPrevious : Bool; }):atom.Range;
+	function getBeginningOfCurrentWordBufferPosition(?options:{ var wordRegex : js.RegExp; var includeNonWordCharacters : Bool; var allowPrevious : Bool; }):atom.Range;
 	/**
 		Retrieves the buffer position of where the current word ends.
 	**/
-	function getEndOfCurrentWordBufferPosition(options:{ var wordRegex : js.RegExp; var includeNonWordCharacters : Dynamic; }):atom.Range;
+	function getEndOfCurrentWordBufferPosition(?options:{ var wordRegex : js.RegExp; var includeNonWordCharacters : Dynamic; }):atom.Range;
 	/**
 		Retrieves the buffer position of where the next word starts.
 	**/
-	function getBeginningOfNextWordBufferPosition(options:{ var wordRegex : js.RegExp; }):atom.Range;
-	function getCurrentWordBufferRange(options:{ var wordRegex : js.RegExp; }):Dynamic;
-	function getCurrentLineBufferRange(options:{ var includeNewline : Bool; }):Dynamic;
+	function getBeginningOfNextWordBufferPosition(?options:{ var wordRegex : js.RegExp; }):atom.Range;
+	function getCurrentWordBufferRange(?options:{ var wordRegex : js.RegExp; }):Dynamic;
+	function getCurrentLineBufferRange(?options:{ var includeNewline : Bool; }):Dynamic;
 	/**
 		Retrieves the range for the current paragraph.
 	**/
@@ -180,9 +180,9 @@ package atom;
 	/**
 		Get the RegExp used by the cursor to determine what a "word" is.
 	**/
-	function wordRegExp(options:{ var includeNonWordCharacters : Bool; }):js.RegExp;
+	function wordRegExp(?options:{ var includeNonWordCharacters : Bool; }):js.RegExp;
 	/**
 		Get the RegExp used by the cursor to determine what a "subword" is.
 	**/
-	function subwordRegExp(options:{ var backwards : Bool; }):js.RegExp;
+	function subwordRegExp(?options:{ var backwards : Bool; }):js.RegExp;
 }

@@ -14,12 +14,12 @@ package atom;
 		Add a listener for changes to a given key path. If `keyPath` is
 		not specified, your callback will be called on changes to any key.
 	**/
-	function onDidChange(keyPath:String, optional:{ @:optional
+	function onDidChange(?keyPath:String, ?optional:{ @:optional
 	var scopeDescriptor : atom.ScopeDescriptor; }, callback:{ var newValue : Dynamic; var oldValue : Dynamic; } -> Dynamic):atom.Disposable;
 	/**
 		Retrieves the setting for the given key.
 	**/
-	function get(keyPath:String, options:{ @:optional
+	function get(keyPath:String, ?options:{ @:optional
 	var sources : Array<Dynamic>; @:optional
 	var excludeSources : Array<Dynamic>; @:optional
 	var scope : atom.ScopeDescriptor; }):Dynamic;
@@ -27,17 +27,17 @@ package atom;
 		Get all of the values for the given key-path, along with their
 		associated scope selector.
 	**/
-	function getAll(keyPath:String, options:Dynamic<Dynamic>):Array<Dynamic>;
+	function getAll(keyPath:String, ?options:Dynamic<Dynamic>):Array<Dynamic>;
 	/**
 		Sets the value for a configuration setting.
 	**/
-	function set(keyPath:String, value:Dynamic, options:{ @:optional
+	function set(keyPath:String, value:Dynamic, ?options:{ @:optional
 	var scopeSelector : String; @:optional
 	var source : String; }):Bool;
 	/**
 		Restore the setting at `keyPath` to its default value.
 	**/
-	function unset(keyPath:String, options:{ @:optional
+	function unset(keyPath:String, ?options:{ @:optional
 	var scopeSelector : String; @:optional
 	var source : String; }):Dynamic;
 	/**

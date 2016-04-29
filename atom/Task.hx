@@ -14,7 +14,7 @@ package atom;
 	/**
 		Starts the task.
 	**/
-	function start(args:Dynamic, callback:haxe.Constraints.Function):Dynamic;
+	function start(args:Dynamic, ?callback:haxe.Constraints.Function):Dynamic;
 	/**
 		Send message to the task.
 	**/

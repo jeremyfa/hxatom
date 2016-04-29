@@ -6,12 +6,12 @@ package atom;
 	/**
 		Configures a new Directory instance, no files are accessed.
 	**/
-	function new(directoryPath:String, symlink:Bool):Void;
+	function new(directoryPath:String, ?symlink:Bool):Void;
 	/**
 		Creates the directory on disk that corresponds to `::getPath()` if
 		no such directory already exists.
 	**/
-	function create(mode:Float):js.Promise<Dynamic>;
+	function create(?mode:Float):js.Promise<Dynamic>;
 	/**
 		Invoke the given callback when the directory's contents change.
 	**/
