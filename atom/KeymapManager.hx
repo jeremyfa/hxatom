@@ -26,25 +26,25 @@ package atom;
 		Invoke the given callback when one or more keystrokes completely
 		match a key binding.
 	**/
-	function onDidMatchBinding(callback:{ var keystrokes : String; var binding : Dynamic<Dynamic>; var keyboardEventTarget : Dynamic; } -> Dynamic):atom.Disposable;
+	function onDidMatchBinding(callback:{ var keystrokes : String; var binding : Dynamic<Dynamic>; var keyboardEventTarget : Dynamic; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when one or more keystrokes partially
 		match a binding.
 	**/
-	function onDidPartiallyMatchBindings(callback:{ var keystrokes : String; var partiallyMatchedBindings : Dynamic<Dynamic>; var keyboardEventTarget : Dynamic; } -> Dynamic):atom.Disposable;
+	function onDidPartiallyMatchBindings(callback:{ var keystrokes : String; var partiallyMatchedBindings : Dynamic<Dynamic>; var keyboardEventTarget : Dynamic; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when one or more keystrokes fail to match
 		any bindings.
 	**/
-	function onDidFailToMatchBinding(callback:{ var keystrokes : String; var keyboardEventTarget : Dynamic; } -> Dynamic):atom.Disposable;
+	function onDidFailToMatchBinding(callback:{ var keystrokes : String; var keyboardEventTarget : Dynamic; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when a keymap file not able to be loaded.
 	**/
-	function onDidFailToReadFile(callback:{ var message : String; var stack : String; } -> Dynamic):atom.Disposable;
+	function onDidFailToReadFile(callback:{ var message : String; var stack : String; } -> Void):atom.Disposable;
 	/**
 		Add sets of key bindings grouped by CSS selector.
 	**/
-	function add(source:String, bindings:Dynamic<Dynamic>):Dynamic;
+	function add(source:String, bindings:Dynamic<Dynamic>, priority:Float):Dynamic;
 	/**
 		Get all current key bindings.
 	**/
@@ -56,12 +56,12 @@ package atom;
 	/**
 		Load the key bindings from the given path.
 	**/
-	function loadKeymap(path:String, options:{ var watch : Dynamic; }):Dynamic;
+	function loadKeymap(path:String, options:{ var watch : Dynamic; var priority : Float; }):Dynamic;
 	/**
 		Cause the keymap to reload the key bindings file at the given path
 		whenever it changes.
 	**/
-	function watchKeymap(path:String):Dynamic;
+	function watchKeymap(path:String, options:{ var priority : Float; }):Dynamic;
 	/**
 		Dispatch a custom event associated with the matching key binding for
 		the given `KeyboardEvent` if one can be found.

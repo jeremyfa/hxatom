@@ -8,14 +8,14 @@ package atom;
 		than {::onDidChange} in that it will immediately call your callback with the
 		current value of the config entry.
 	**/
-	function observe(keyPath:String, options:{ @:optional
-	var scopeDescriptor : atom.ScopeDescriptor; }, callback:Dynamic -> Dynamic):atom.Disposable;
+	function observe(keyPath:String, ?options:{ @:optional
+	var scope : atom.ScopeDescriptor; }, callback:Dynamic -> Void):atom.Disposable;
 	/**
 		Add a listener for changes to a given key path. If `keyPath` is
 		not specified, your callback will be called on changes to any key.
 	**/
-	function onDidChange(?keyPath:String, ?optional:{ @:optional
-	var scopeDescriptor : atom.ScopeDescriptor; }, callback:{ var newValue : Dynamic; var oldValue : Dynamic; } -> Dynamic):atom.Disposable;
+	function onDidChange(?keyPath:String, ?options:{ @:optional
+	var scope : atom.ScopeDescriptor; }, callback:{ var newValue : Dynamic; var oldValue : Dynamic; } -> Void):atom.Disposable;
 	/**
 		Retrieves the setting for the given key.
 	**/

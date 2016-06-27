@@ -7,7 +7,7 @@ package atom;
 	/**
 		Calls your `callback` when the cursor has been moved.
 	**/
-	function onDidChangePosition(callback:{ var oldBufferPosition : atom.Point; var oldScreenPosition : atom.Point; var newBufferPosition : atom.Point; var newScreenPosition : atom.Point; var textChanged : Bool; var Cursor : atom.Cursor; } -> Dynamic):atom.Disposable;
+	function onDidChangePosition(callback:{ var oldBufferPosition : atom.Point; var oldScreenPosition : atom.Point; var newBufferPosition : atom.Point; var newScreenPosition : atom.Point; var textChanged : Bool; var Cursor : atom.Cursor; } -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when the cursor is destroyed
 	**/
@@ -15,7 +15,7 @@ package atom;
 	/**
 		Calls your `callback` when the cursor's visibility has changed
 	**/
-	function onDidChangeVisibility(callback:Bool -> Dynamic):atom.Disposable;
+	function onDidChangeVisibility(callback:Bool -> Void):atom.Disposable;
 	/**
 		Moves a cursor to a given screen position.
 	**/
@@ -36,7 +36,7 @@ package atom;
 	function getCurrentBufferLine():Dynamic;
 	function isAtBeginningOfLine():Dynamic;
 	function isAtEndOfLine():Dynamic;
-	function getMarker():atom.Marker;
+	function getMarker():atom.TextEditorMarker;
 	/**
 		Identifies if the cursor is surrounded by whitespace.
 	**/

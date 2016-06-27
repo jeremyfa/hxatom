@@ -1,13 +1,13 @@
 /**
 	A notification manager used to create {Notification}s to be shown
-	to the user. 
+	to the user.
 **/
 package atom;
 @:jsRequire("atom", "NotificationManager") extern class NotificationManager {
 	/**
 		Invoke the given callback after a notification has been added.
 	**/
-	function onDidAddNotification(callback:atom.Notification -> Dynamic):atom.Disposable;
+	function onDidAddNotification(callback:atom.Notification -> Void):atom.Disposable;
 	/**
 		Add a success notification.
 	**/

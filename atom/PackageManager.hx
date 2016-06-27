@@ -14,19 +14,19 @@ package atom;
 	/**
 		Invoke the given callback when a package is activated.
 	**/
-	function onDidActivatePackage(callback:Dynamic<Dynamic> -> Dynamic):atom.Disposable;
+	function onDidActivatePackage(callback:Dynamic<Dynamic> -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when a package is deactivated.
 	**/
-	function onDidDeactivatePackage(callback:Dynamic<Dynamic> -> Dynamic):atom.Disposable;
+	function onDidDeactivatePackage(callback:Dynamic<Dynamic> -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when a package is loaded.
 	**/
-	function onDidLoadPackage(callback:Dynamic<Dynamic> -> Dynamic):atom.Disposable;
+	function onDidLoadPackage(callback:Dynamic<Dynamic> -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when a package is unloaded.
 	**/
-	function onDidUnloadPackage(callback:Dynamic<Dynamic> -> Dynamic):atom.Disposable;
+	function onDidUnloadPackage(callback:Dynamic<Dynamic> -> Void):atom.Disposable;
 	/**
 		Get the path to the apm command.
 	**/

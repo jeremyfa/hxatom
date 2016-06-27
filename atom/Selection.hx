@@ -6,7 +6,7 @@ package atom;
 	/**
 		Calls your `callback` when the selection was moved.
 	**/
-	function onDidChangeRange(callback:{ var oldBufferRange : atom.Range; var oldScreenRange : atom.Range; var newBufferRange : atom.Range; var newScreenRange : atom.Range; var selection : atom.Selection; } -> Dynamic):atom.Disposable;
+	function onDidChangeRange(callback:{ var oldBufferRange : atom.Range; var oldScreenRange : atom.Range; var newBufferRange : atom.Range; var newScreenRange : atom.Range; var selection : atom.Selection; } -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when the selection was destroyed
 	**/

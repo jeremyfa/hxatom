@@ -52,7 +52,7 @@ package atom;
 	/**
 		Reads file entries in this directory from disk asynchronously.
 	**/
-	function getEntries(callback:js.Error -> Array<Dynamic> -> Dynamic):Dynamic;
+	function getEntries(callback:js.Error -> Array<Dynamic> -> Void):Dynamic;
 	/**
 		Determines if the given path (real or symbolic) is inside this
 		directory. This method does not actually check if the path exists, it just

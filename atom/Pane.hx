@@ -2,19 +2,19 @@
 	A container for presenting content in the center of the workspace.
 	Panes can contain multiple items, one of which is *active* at a given time.
 	The view corresponding to the active item is displayed in the interface. In
-	the default configuration, tabs are also displayed for each item. 
+	the default configuration, tabs are also displayed for each item.
 **/
 package atom;
 @:jsRequire("atom", "Pane") extern class Pane {
 	/**
 		Invoke the given callback when the pane resizes
 	**/
-	function onDidChangeFlexScale(callback:Float -> Dynamic):atom.Disposable;
+	function onDidChangeFlexScale(callback:Float -> Void):atom.Disposable;
 	/**
 		Invoke the given callback with the current and future values of
 		{::getFlexScale}.
 	**/
-	function observeFlexScale(callback:Float -> Dynamic):atom.Disposable;
+	function observeFlexScale(callback:Float -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when the pane is activated.
 	**/
@@ -31,46 +31,46 @@ package atom;
 		Invoke the given callback when the value of the {::isActive}
 		property changes.
 	**/
-	function onDidChangeActive(callback:Bool -> Dynamic):atom.Disposable;
+	function onDidChangeActive(callback:Bool -> Void):atom.Disposable;
 	/**
 		Invoke the given callback with the current and future values of the
 		{::isActive} property.
 	**/
-	function observeActive(callback:Bool -> Dynamic):atom.Disposable;
+	function observeActive(callback:Bool -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when an item is added to the pane.
 	**/
-	function onDidAddItem(callback:{ var item : Dynamic; var index : Float; } -> Dynamic):atom.Disposable;
+	function onDidAddItem(callback:{ var item : Dynamic; var index : Float; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when an item is removed from the pane.
 	**/
-	function onDidRemoveItem(callback:{ var item : Dynamic; var index : Float; } -> Dynamic):atom.Disposable;
+	function onDidRemoveItem(callback:{ var item : Dynamic; var index : Float; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback before an item is removed from the pane.
 	**/
-	function onWillRemoveItem(callback:{ var item : Dynamic; var index : Float; } -> Dynamic):Dynamic;
+	function onWillRemoveItem(callback:{ var item : Dynamic; var index : Float; } -> Void):Dynamic;
 	/**
 		Invoke the given callback when an item is moved within the pane.
 	**/
-	function onDidMoveItem(callback:{ var item : Dynamic; var oldIndex : Float; var newIndex : Float; } -> Dynamic):atom.Disposable;
+	function onDidMoveItem(callback:{ var item : Dynamic; var oldIndex : Float; var newIndex : Float; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback with all current and future items.
 	**/
-	function observeItems(callback:Dynamic -> Dynamic):atom.Disposable;
+	function observeItems(callback:Dynamic -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when the value of {::getActiveItem}
 		changes.
 	**/
-	function onDidChangeActiveItem(callback:Dynamic -> Dynamic):atom.Disposable;
+	function onDidChangeActiveItem(callback:Dynamic -> Void):atom.Disposable;
 	/**
 		Invoke the given callback with the current and future values of
 		{::getActiveItem}.
 	**/
-	function observeActiveItem(callback:Dynamic -> Dynamic):atom.Disposable;
+	function observeActiveItem(callback:Dynamic -> Void):atom.Disposable;
 	/**
 		Invoke the given callback before items are destroyed.
 	**/
-	function onWillDestroyItem(callback:{ var item : Dynamic; var index : Dynamic; } -> Dynamic):atom.Disposable;
+	function onWillDestroyItem(callback:{ var item : Dynamic; var index : Dynamic; } -> Void):atom.Disposable;
 	/**
 		Get the items in this pane.
 	**/
@@ -109,13 +109,16 @@ package atom;
 	function activateItemAtIndex(index:Float):Dynamic;
 	/**
 		Make the given item *active*, causing it to be displayed by
-		the pane's view. 
+		the pane's view.
 	**/
-	function activateItem():Dynamic;
+	function activateItem(?options:{ @:optional
+	var pending : Bool; }):Dynamic;
 	/**
 		Add the given item to the pane.
 	**/
-	function addItem(item:Dynamic, ?index:Float):Dynamic;
+	function addItem(item:Dynamic, ?options:{ @:optional
+	var index : Float; @:optional
+	var pending : Bool; }):Dynamic;
 	/**
 		Add the given items to the pane.
 	**/

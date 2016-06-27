@@ -10,7 +10,7 @@ package atom;
 	/**
 		Calls your `callback` when the gutter's visibility changes.
 	**/
-	function onDidChangeVisible(callback:Dynamic -> Dynamic):atom.Disposable;
+	function onDidChangeVisible(callback:Dynamic -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when the gutter is destroyed.
 	**/
@@ -28,9 +28,9 @@ package atom;
 	**/
 	function isVisible():Bool;
 	/**
-		Add a decoration that tracks a {Marker}. When the marker moves,
+		Add a decoration that tracks a {TextEditorMarker}. When the marker moves,
 		is invalidated, or is destroyed, the decoration will be updated to reflect
 		the marker's state.
 	**/
-	function decorateMarker(marker:atom.Marker, decorationParams:{ var type : Dynamic; }):atom.Decoration;
+	function decorateMarker(marker:atom.TextEditorMarker, decorationParams:{ var type : Dynamic; }):atom.Decoration;
 }

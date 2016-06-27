@@ -12,12 +12,12 @@ package atom;
 		Invoke the given callback synchronously _before_ the content of the
 		buffer changes.
 	**/
-	function onWillChange(callback:{ var oldRange : atom.Range; var newRange : atom.Range; var oldText : String; var newText : String; } -> Dynamic):atom.Disposable;
+	function onWillChange(callback:{ var oldRange : atom.Range; var newRange : atom.Range; var oldText : String; var newText : String; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback synchronously when the content of the
 		buffer changes.
 	**/
-	function onDidChange(callback:{ var oldRange : atom.Range; var newRange : atom.Range; var oldText : String; var newText : String; } -> Dynamic):atom.Disposable;
+	function onDidChange(callback:{ var oldRange : atom.Range; var newRange : atom.Range; var oldText : String; var newText : String; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback asynchronously following one or more
 		changes after {::getStoppedChangingDelay} milliseconds elapse without an
@@ -30,9 +30,9 @@ package atom;
 	**/
 	function onDidConflict(callback:haxe.Constraints.Function):atom.Disposable;
 	/**
-		Invoke the given callback the value of {::isModified} changes.
+		Invoke the given callback if the value of {::isModified} changes.
 	**/
-	function onDidChangeModified(callback:Bool -> Dynamic):atom.Disposable;
+	function onDidChangeModified(callback:Bool -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when all marker `::onDidChange`
 		observers have been notified following a change to the buffer.
@@ -41,15 +41,15 @@ package atom;
 	/**
 		Invoke the given callback when a marker is created.
 	**/
-	function onDidCreateMarker(callback:atom.Marker -> Dynamic):atom.Disposable;
+	function onDidCreateMarker(callback:Array<Dynamic> -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when the value of {::getPath} changes.
 	**/
-	function onDidChangePath(callback:String -> Dynamic):atom.Disposable;
+	function onDidChangePath(callback:String -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when the value of {::getEncoding} changes.
 	**/
-	function onDidChangeEncoding(callback:String -> Dynamic):atom.Disposable;
+	function onDidChangeEncoding(callback:String -> Void):atom.Disposable;
 	/**
 		Invoke the given callback before the buffer is saved to disk.
 	**/
@@ -57,7 +57,7 @@ package atom;
 	/**
 		Invoke the given callback after the buffer is saved to disk.
 	**/
-	function onDidSave(callback:{ var path : Dynamic; } -> Dynamic):atom.Disposable;
+	function onDidSave(callback:{ var path : Dynamic; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback after the file backing the buffer is
 		deleted.
@@ -81,7 +81,7 @@ package atom;
 		Invoke the given callback when there is an error in watching the
 		file.
 	**/
-	function onWillThrowWatchError(callback:{ var error : Dynamic<Dynamic>; var handle : haxe.Constraints.Function; } -> Dynamic):atom.Disposable;
+	function onWillThrowWatchError(callback:{ var error : Dynamic<Dynamic>; var handle : haxe.Constraints.Function; } -> Void):atom.Disposable;
 	/**
 		Get the number of milliseconds that will elapse without a change
 		before {::onDidStopChanging} observers are invoked following a change.
@@ -200,30 +200,44 @@ package atom;
 	**/
 	function deleteRows(startRow:Float, endRow:Float):atom.Range;
 	/**
-		Create a marker with the given range. This marker will maintain
-		its logical location as the buffer is changed, so if you mark a particular
-		word, the marker will remain over that word even if the word's location in
-		the buffer changes.
+		*Experimental:* Create a layer to contain a set of related markers.
 	**/
-	function markRange(range:atom.Range, properties:Dynamic):atom.Marker;
+	function addMarkerLayer(options:Dynamic):atom.MarkerLayer;
 	/**
-		Create a marker at the given position with no tail.
+		*Experimental:* Get a {MarkerLayer} by id.
 	**/
-	function markPosition(position:atom.Point, properties:Dynamic):atom.Marker;
+	function getMarkerLayer(id:Dynamic):atom.MarkerLayer;
 	/**
-		Get all existing markers on the buffer.
+		*Experimental:* Get the default {MarkerLayer}.
+	**/
+	function getDefaultMarkerLayer():atom.MarkerLayer;
+	/**
+		Create a marker with the given range in the default marker layer.
+		This marker will maintain its logical location as the buffer is changed, so
+		if you mark a particular word, the marker will remain over that word even if
+		the word's location in the buffer changes.
+	**/
+	function markRange(range:atom.Range, properties:Dynamic):Array<Dynamic>;
+	/**
+		Create a marker at the given position with no tail in the default
+		marker layer.
+	**/
+	function markPosition(position:atom.Point, properties:Dynamic):Array<Dynamic>;
+	/**
+		Get all existing markers on the default marker layer.
 	**/
 	function getMarkers():Array<Dynamic>;
 	/**
-		Get an existing marker by its id.
+		Get an existing marker by its id from the default marker layer.
 	**/
-	function getMarker(id:Float):atom.Marker;
+	function getMarker(id:Float):Array<Dynamic>;
 	/**
-		Find markers conforming to the given parameters.
+		Find markers conforming to the given parameters in the default
+		marker layer.
 	**/
 	function findMarkers(params:Dynamic):Array<Dynamic>;
 	/**
-		Get the number of markers in the buffer.
+		Get the number of markers in the default marker layer.
 	**/
 	function getMarkerCount():Float;
 	/**
@@ -239,7 +253,9 @@ package atom;
 	**/
 	function transact(?groupingInterval:Float, fn:haxe.Constraints.Function):Dynamic;
 	/**
-		Clear the undo stack. 
+		Clear the undo stack. When calling this method within a transaction,
+		the {::onDidChangeText} event will not be triggered because the information
+		describing the changes is lost. 
 	**/
 	function clearUndoStack():Dynamic;
 	/**
@@ -257,26 +273,27 @@ package atom;
 		transaction for purposes of undo/redo.
 	**/
 	function groupChangesSinceCheckpoint():Bool;
+	function getChangesSinceCheckpoint():Dynamic;
 	/**
 		Scan regular expression matches in the entire buffer, calling the
 		given iterator function on each match.
 	**/
-	function scan(regex:js.RegExp, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Dynamic):Dynamic;
+	function scan(regex:js.RegExp, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Void):Dynamic;
 	/**
 		Scan regular expression matches in the entire buffer in reverse
 		order, calling the given iterator function on each match.
 	**/
-	function backwardsScan(regex:js.RegExp, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Dynamic):Dynamic;
+	function backwardsScan(regex:js.RegExp, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Void):Dynamic;
 	/**
 		Scan regular expression matches in a given range , calling the given
 		iterator function on each match.
 	**/
-	function scanInRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Dynamic):Dynamic;
+	function scanInRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Void):Dynamic;
 	/**
 		Scan regular expression matches in a given range in reverse order,
 		calling the given iterator function on each match.
 	**/
-	function backwardsScanInRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Dynamic):Dynamic;
+	function backwardsScanInRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Void):Dynamic;
 	/**
 		Replace all regular expression matches in the entire buffer.
 	**/

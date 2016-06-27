@@ -68,6 +68,10 @@ package atom;
 	**/
 	var workspace : atom.Workspace;
 	/**
+		A {TextEditorRegistry} instance 
+	**/
+	var textEditors : Array<Dynamic>;
+	/**
 		Invoke the given callback whenever {::beep} is called.
 	**/
 	function onDidBeep(callback:haxe.Constraints.Function):atom.Disposable;
@@ -75,11 +79,11 @@ package atom;
 		Invoke the given callback when there is an unhandled error, but
 		before the devtools pop open
 	**/
-	function onWillThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; var preventDefault : haxe.Constraints.Function; } -> Dynamic):atom.Disposable;
+	function onWillThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; var preventDefault : haxe.Constraints.Function; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback whenever there is an unhandled error.
 	**/
-	function onDidThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; } -> Dynamic):atom.Disposable;
+	function onDidThrowError(callback:{ var originalError : Dynamic<Dynamic>; var message : String; var url : String; var line : Float; var column : Float; } -> Void):atom.Disposable;
 	function inDevMode():Bool;
 	function inSafeMode():Bool;
 	function inSpecMode():Bool;
@@ -103,7 +107,7 @@ package atom;
 	/**
 		Prompt the user to select one or more folders.
 	**/
-	function pickFolder(callback:Array<Dynamic> -> Dynamic):Dynamic;
+	function pickFolder(callback:Array<Dynamic> -> Void):Dynamic;
 	/**
 		Close the current window. 
 	**/
@@ -169,13 +173,13 @@ package atom;
 	var detailedMessage : String; @:optional
 	var buttons : Dynamic; }):Float;
 	/**
-		Open the dev tools for the current window. 
+		Open the dev tools for the current window.
 	**/
-	function openDevTools():Dynamic;
+	function openDevTools():js.Promise<Dynamic>;
 	/**
-		Toggle the visibility of the dev tools for the current window. 
+		Toggle the visibility of the dev tools for the current window.
 	**/
-	function toggleDevTools():Dynamic;
+	function toggleDevTools():js.Promise<Dynamic>;
 	/**
 		Execute code in dev tools. 
 	**/

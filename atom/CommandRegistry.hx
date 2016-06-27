@@ -10,7 +10,7 @@ package atom;
 		Add one or more command listeners associated with a selector.
 	**/
 	@:overload(function(target:String, commands:Dynamic<Dynamic>):atom.Disposable { })
-	function add(target:String, commandName:String, callback:Dynamic -> Dynamic):atom.Disposable;
+	function add(target:String, commandName:String, callback:Dynamic -> Void):atom.Disposable;
 	/**
 		Find all registered commands matching a query.
 	**/
@@ -22,9 +22,9 @@ package atom;
 	/**
 		Invoke the given callback before dispatching a command event.
 	**/
-	function onWillDispatch(callback:Dynamic -> Dynamic):Dynamic;
+	function onWillDispatch(callback:Dynamic -> Void):Dynamic;
 	/**
 		Invoke the given callback after dispatching a command event.
 	**/
-	function onDidDispatch(callback:Dynamic -> Dynamic):Dynamic;
+	function onDidDispatch(callback:Dynamic -> Void):Dynamic;
 }

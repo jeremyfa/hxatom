@@ -30,11 +30,11 @@ package atom;
 		Calls your `callback` when a {Cursor} is moved. If there are
 		multiple cursors, your callback will be called for each cursor.
 	**/
-	function onDidChangeCursorPosition(callback:{ var oldBufferPosition : atom.Point; var oldScreenPosition : atom.Point; var newBufferPosition : atom.Point; var newScreenPosition : atom.Point; var textChanged : Bool; var cursor : atom.Cursor; } -> Dynamic):atom.Disposable;
+	function onDidChangeCursorPosition(callback:{ var oldBufferPosition : atom.Point; var oldScreenPosition : atom.Point; var newBufferPosition : atom.Point; var newScreenPosition : atom.Point; var textChanged : Bool; var cursor : atom.Cursor; } -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a selection's screen range changes.
 	**/
-	function onDidChangeSelectionRange(callback:{ var oldBufferRange : atom.Range; var oldScreenRange : atom.Range; var newBufferRange : atom.Range; var newScreenRange : atom.Range; var selection : atom.Selection; } -> Dynamic):atom.Disposable;
+	function onDidChangeSelectionRange(callback:{ var oldBufferRange : atom.Range; var oldScreenRange : atom.Range; var newBufferRange : atom.Range; var newScreenRange : atom.Range; var selection : atom.Selection; } -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when soft wrap was enabled or disabled.
 	**/
@@ -48,12 +48,12 @@ package atom;
 		colorizes the text has been changed. Immediately calls your callback with
 		the current grammar.
 	**/
-	function observeGrammar(callback:atom.Grammar -> Dynamic):atom.Disposable;
+	function observeGrammar(callback:atom.Grammar -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when the grammar that interprets and
 		colorizes the text has been changed.
 	**/
-	function onDidChangeGrammar(callback:atom.Grammar -> Dynamic):atom.Disposable;
+	function onDidChangeGrammar(callback:atom.Grammar -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when the result of {::isModified} changes.
 	**/
@@ -66,15 +66,15 @@ package atom;
 	/**
 		Calls your `callback` before text has been inserted.
 	**/
-	function onWillInsertText(callback:{ var text : String; var cancel : haxe.Constraints.Function; } -> Dynamic):atom.Disposable;
+	function onWillInsertText(callback:{ var text : String; var cancel : haxe.Constraints.Function; } -> Void):atom.Disposable;
 	/**
 		Calls your `callback` after text has been inserted.
 	**/
-	function onDidInsertText(callback:{ var text : String; } -> Dynamic):atom.Disposable;
+	function onDidInsertText(callback:{ var text : String; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback after the buffer is saved to disk.
 	**/
-	function onDidSave(callback:{ var path : Dynamic; } -> Dynamic):atom.Disposable;
+	function onDidSave(callback:{ var path : Dynamic; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when the editor is destroyed.
 	**/
@@ -83,45 +83,45 @@ package atom;
 		Calls your `callback` when a {Cursor} is added to the editor.
 		Immediately calls your callback for each existing cursor.
 	**/
-	function observeCursors(callback:atom.Cursor -> Dynamic):atom.Disposable;
+	function observeCursors(callback:atom.Cursor -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Cursor} is added to the editor.
 	**/
-	function onDidAddCursor(callback:atom.Cursor -> Dynamic):atom.Disposable;
+	function onDidAddCursor(callback:atom.Cursor -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Cursor} is removed from the editor.
 	**/
-	function onDidRemoveCursor(callback:atom.Cursor -> Dynamic):atom.Disposable;
+	function onDidRemoveCursor(callback:atom.Cursor -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Selection} is added to the editor.
 		Immediately calls your callback for each existing selection.
 	**/
-	function observeSelections(callback:atom.Selection -> Dynamic):atom.Disposable;
+	function observeSelections(callback:atom.Selection -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Selection} is added to the editor.
 	**/
-	function onDidAddSelection(callback:atom.Selection -> Dynamic):atom.Disposable;
+	function onDidAddSelection(callback:atom.Selection -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Selection} is removed from the editor.
 	**/
-	function onDidRemoveSelection(callback:atom.Selection -> Dynamic):atom.Disposable;
+	function onDidRemoveSelection(callback:atom.Selection -> Void):atom.Disposable;
 	/**
 		Calls your `callback` with each {Decoration} added to the editor.
 		Calls your `callback` immediately for any existing decorations.
 	**/
-	function observeDecorations(callback:atom.Decoration -> Dynamic):atom.Disposable;
+	function observeDecorations(callback:atom.Decoration -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Decoration} is added to the editor.
 	**/
-	function onDidAddDecoration(callback:atom.Decoration -> Dynamic):atom.Disposable;
+	function onDidAddDecoration(callback:atom.Decoration -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Decoration} is removed from the editor.
 	**/
-	function onDidRemoveDecoration(callback:atom.Decoration -> Dynamic):atom.Disposable;
+	function onDidRemoveDecoration(callback:atom.Decoration -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when the placeholder text is changed.
 	**/
-	function onDidChangePlaceholderText(callback:String -> Dynamic):atom.Disposable;
+	function onDidChangePlaceholderText(callback:String -> Void):atom.Disposable;
 	/**
 		Retrieves the current {TextBuffer}. 
 	**/
@@ -130,23 +130,23 @@ package atom;
 		Calls your `callback` when a {Gutter} is added to the editor.
 		Immediately calls your callback for each existing gutter.
 	**/
-	function observeGutters(callback:atom.Gutter -> Dynamic):atom.Disposable;
+	function observeGutters(callback:atom.Gutter -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Gutter} is added to the editor.
 	**/
-	function onDidAddGutter(callback:atom.Gutter -> Dynamic):atom.Disposable;
+	function onDidAddGutter(callback:atom.Gutter -> Void):atom.Disposable;
 	/**
 		Calls your `callback` when a {Gutter} is removed from the editor.
 	**/
-	function onDidRemoveGutter(callback:atom.Gutter -> Dynamic):atom.Disposable;
+	function onDidRemoveGutter(callback:atom.Gutter -> Void):atom.Disposable;
 	/**
 		Get the editor's title for display in other parts of the
 		UI such as the tabs.
 	**/
 	function getTitle():String;
 	/**
-		Get the editor's long title for display in other parts of the UI
-		such as the window title.
+		Get unique title for display in other parts of the UI, such as
+		the window title.
 	**/
 	function getLongTitle():String;
 	function getPath():String;
@@ -356,20 +356,22 @@ package atom;
 	**/
 	function clipScreenRange(range:atom.Range, ?options:atom.Range):Dynamic;
 	/**
-		Adds a decoration that tracks a {Marker}. When the marker moves,
-		is invalidated, or is destroyed, the decoration will be updated to reflect
-		the marker's state.
+		Add a decoration that tracks a {TextEditorMarker}. When the
+		marker moves, is invalidated, or is destroyed, the decoration will be
+		updated to reflect the marker's state.
 	**/
-	function decorateMarker(marker:atom.Marker, decorationParams:{ var type : Dynamic; var class_ : Dynamic; @:optional
+	function decorateMarker(marker:atom.TextEditorMarker, decorationParams:{ var type : Dynamic; var class_ : Dynamic; @:optional
 	var item : Array<Dynamic>; @:optional
 	var onlyHead : Dynamic; @:optional
 	var onlyEmpty : Dynamic; @:optional
 	var onlyNonEmpty : Dynamic; @:optional
 	var position : Dynamic; }):atom.Decoration;
 	/**
-		Get all the decorations within a screen row range.
+		*Experimental:* Add a decoration to every marker in the given
+		marker layer. Can be used to decorate a large number of markers without
+		having to create and manage many individual decorations.
 	**/
-	function decorationsForScreenRowRange(startScreenRow:Float, endScreenRow:Float):Dynamic;
+	function decorateMarkerLayer(markerLayer:atom.TextEditorMarkerLayer, decorationParams:Dynamic):atom.LayerDecoration;
 	/**
 		Get all decorations.
 	**/
@@ -391,48 +393,60 @@ package atom;
 	**/
 	function getOverlayDecorations(?propertyFilter:Dynamic<Dynamic>):Array<Dynamic>;
 	/**
-		Create a marker with the given range in buffer coordinates. This
-		marker will maintain its logical location as the buffer is changed, so if
-		you mark a particular word, the marker will remain over that word even if
-		the word's location in the buffer changes.
+		Create a marker on the default marker layer with the given range
+		in buffer coordinates. This marker will maintain its logical location as the
+		buffer is changed, so if you mark a particular word, the marker will remain
+		over that word even if the word's location in the buffer changes.
 	**/
-	function markBufferRange(range:atom.Range, properties:Dynamic):atom.Marker;
+	function markBufferRange(range:atom.Range, properties:Dynamic):atom.TextEditorMarker;
 	/**
-		Create a marker with the given range in screen coordinates. This
-		marker will maintain its logical location as the buffer is changed, so if
-		you mark a particular word, the marker will remain over that word even if
-		the word's location in the buffer changes.
+		Create a marker on the default marker layer with the given range
+		in screen coordinates. This marker will maintain its logical location as the
+		buffer is changed, so if you mark a particular word, the marker will remain
+		over that word even if the word's location in the buffer changes.
 	**/
-	function markScreenRange(range:atom.Range, properties:Dynamic):atom.Marker;
+	function markScreenRange(range:atom.Range, properties:Dynamic):atom.TextEditorMarker;
 	/**
-		Mark the given position in buffer coordinates.
+		Mark the given position in buffer coordinates on the default
+		marker layer.
 	**/
-	function markBufferPosition(position:atom.Point, ?options:Dynamic):atom.Marker;
+	function markBufferPosition(position:atom.Point, ?options:Dynamic):atom.TextEditorMarker;
 	/**
-		Mark the given position in screen coordinates.
+		Mark the given position in screen coordinates on the default
+		marker layer.
 	**/
-	function markScreenPosition(position:atom.Point, ?options:Dynamic):atom.Marker;
+	function markScreenPosition(position:atom.Point, ?options:Dynamic):atom.TextEditorMarker;
 	/**
-		Find all {Marker}s that match the given properties.
+		Find all {TextEditorMarker}s on the default marker layer that
+		match the given properties.
 	**/
 	function findMarkers(properties:{ var startBufferRow : Dynamic; var endBufferRow : Dynamic; var containsBufferRange : atom.Range; var containsBufferPosition : atom.Point; }):Dynamic;
 	/**
-		Observe changes in the set of markers that intersect a particular
-		region of the editor.
-	**/
-	function observeMarkers(callback:{ var insert : Array<Dynamic>; var update : Array<Dynamic>; var remove : Array<Dynamic>; } -> Dynamic):Array<Dynamic>;
-	/**
-		Get the {Marker} for the given marker id.
+		Get the {TextEditorMarker} on the default layer for the given
+		marker id.
 	**/
 	function getMarker(id:Float):Dynamic;
 	/**
-		Get all {Marker}s. Consider using {::findMarkers} 
+		Get all {TextEditorMarker}s on the default marker layer. Consider
+		using {::findMarkers} 
 	**/
 	function getMarkers():Dynamic;
 	/**
-		Get the number of markers in this editor's buffer.
+		Get the number of markers in the default marker layer.
 	**/
 	function getMarkerCount():Float;
+	/**
+		*Experimental:* Create a marker layer to group related markers.
+	**/
+	function addMarkerLayer(options:{ var maintainHistory : Bool; }):atom.TextEditorMarkerLayer;
+	/**
+		*Experimental:* Get a {TextEditorMarkerLayer} by id.
+	**/
+	function getMarkerLayer(id:Dynamic):atom.MarkerLayer;
+	/**
+		*Experimental:* Get the default {TextEditorMarkerLayer}.
+	**/
+	function getDefaultMarkerLayer():atom.TextEditorMarkerLayer;
 	/**
 		Get the position of the most recently added cursor in buffer
 		coordinates.
@@ -725,7 +739,7 @@ package atom;
 	/**
 		Select the range of the given marker if it is valid.
 	**/
-	function selectMarker(marker:atom.Marker):atom.Range;
+	function selectMarker(marker:atom.TextEditorMarker):atom.Range;
 	/**
 		Get the most recently added {Selection}.
 	**/
@@ -748,17 +762,17 @@ package atom;
 		Scan regular expression matches in the entire buffer, calling the
 		given iterator function on each match.
 	**/
-	function scan(regex:js.RegExp, iterator:{ var match : Dynamic; var matchText : String; var range : atom.Range; var stop : haxe.Constraints.Function; var replace : haxe.Constraints.Function; } -> Dynamic):Dynamic;
+	function scan(regex:js.RegExp, iterator:{ var match : Dynamic; var matchText : String; var range : atom.Range; var stop : haxe.Constraints.Function; var replace : haxe.Constraints.Function; } -> Void):Dynamic;
 	/**
 		Scan regular expression matches in a given range, calling the given
 		iterator function on each match.
 	**/
-	function scanInBufferRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Dynamic):Dynamic;
+	function scanInBufferRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Void):Dynamic;
 	/**
 		Scan regular expression matches in a given range in reverse order,
 		calling the given iterator function on each match.
 	**/
-	function backwardsScanInBufferRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Dynamic):Dynamic;
+	function backwardsScanInBufferRange(regex:js.RegExp, range:atom.Range, iterator:Dynamic -> String -> atom.Range -> haxe.Constraints.Function -> haxe.Constraints.Function -> Void):Dynamic;
 	function getSoftTabs():Bool;
 	/**
 		Enable or disable soft tabs for this editor.

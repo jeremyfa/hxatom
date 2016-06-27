@@ -14,6 +14,6 @@ package atom;
 	var submenu : Array<Dynamic>; @:optional
 	var type : Dynamic; @:optional
 	var visible : Bool; @:optional
-	var created : Dynamic -> Dynamic; @:optional
-	var shouldDisplay : Dynamic -> Dynamic; }):atom.Disposable;
+	var created : Dynamic -> Void; @:optional
+	var shouldDisplay : Dynamic -> Void; }):atom.Disposable;
 }

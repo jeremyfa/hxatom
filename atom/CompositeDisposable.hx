@@ -13,9 +13,9 @@ package atom;
 	**/
 	function dispose():Dynamic;
 	/**
-		Add a disposable to be disposed when the composite is disposed.
+		Add disposables to be disposed when the composite is disposed.
 	**/
-	function add(disposable:atom.Disposable):Dynamic;
+	function add(?disposable:atom.Disposable, ?disposable:atom.Disposable, ?disposable:atom.Disposable, ?disposable:atom.Disposable, ?disposable:atom.Disposable):Dynamic;
 	/**
 		Remove a previously added disposable.
 	**/

@@ -1,5 +1,5 @@
 /**
-	Represents a decoration that follows a {Marker}. A decoration is
+	Represents a decoration that follows a {TextEditorMarker}. A decoration is
 	basically a visual representation of a marker. It allows you to add CSS
 	classes to line numbers in the gutter, lines, and add selection-line regions
 	around marked ranges of text.
@@ -13,7 +13,7 @@ package atom;
 	/**
 		When the {Decoration} is updated via {Decoration::update}.
 	**/
-	function onDidChangeProperties(callback:{ var oldProperties : Dynamic<Dynamic>; var newProperties : Dynamic<Dynamic>; } -> Dynamic):atom.Disposable;
+	function onDidChangeProperties(callback:{ var oldProperties : Dynamic<Dynamic>; var newProperties : Dynamic<Dynamic>; } -> Void):atom.Disposable;
 	/**
 		Invoke the given callback when the {Decoration} is destroyed
 	**/
