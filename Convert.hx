@@ -237,7 +237,7 @@ class Convert {
             case "Function":
                 if (children != null) {
                     var args = [for (child in children) convertType(child.type, child.children)];
-                    var ret = macro : Dynamic;
+                    var ret = macro : Void;
                     TFunction(args, ret);
                 } else {
                     macro : haxe.Constraints.Function;
