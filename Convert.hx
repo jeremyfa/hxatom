@@ -185,8 +185,19 @@ class Convert {
         var args:Array<FunctionArg> = [];
         var meta:Null<haxe.macro.Metadata> = [];
         if (m.arguments != null) {
-            for (a in m.arguments)
-                args.push({name: a.name, type: convertType(a.type, a.children), opt: a.isOptional});
+            for (a in m.arguments) {
+                
+                if (a.name.startsWith('...') && a.name.endsWith('s')) {
+                    args.push({name: a.name.substring(3, a.name.length - 1), type: convertType(a.type, a.children), opt: true});
+                    args.push({name: a.name.substring(3, a.name.length - 1), type: convertType(a.type, a.children), opt: true});
+                    args.push({name: a.name.substring(3, a.name.length - 1), type: convertType(a.type, a.children), opt: true});
+                    args.push({name: a.name.substring(3, a.name.length - 1), type: convertType(a.type, a.children), opt: true});
+                    args.push({name: a.name.substring(3, a.name.length - 1), type: convertType(a.type, a.children), opt: true});
+
+                } else {
+                    args.push({name: a.name, type: convertType(a.type, a.children), opt: a.isOptional});
+                }
+            }
         }
         else if (m.titledArguments != null) {
             var i = 0;
